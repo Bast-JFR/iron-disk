@@ -1,0 +1,17 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Dependencias (por si se usa algún tooling más adelante)
+node_modules/
+
+# Contexto de trabajo, no forma parte del proyecto entregable
+CLAUDE.md
+.claude/
