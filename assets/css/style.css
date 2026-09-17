@@ -1,49 +1,100 @@
-/* Reset y Estilos Generales */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #111111; color: #ffffff; }
-
-/* Header y Navegación */
-header { background-color: #1a1a1a; padding: 20px 0; border-bottom: 2px solid #ff6600; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 50px; }
-nav { display: flex; justify-content: center; gap: 50px; }
-nav a { color: #ffffff; text-decoration: none; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
-nav a:hover { color: #ff6600; }
-
-/* Secciones de Géneros (Cuadros) */
-.categoria-genero { 
-    max-width: 1300px; 
-    margin: 0 auto 80px auto; 
-    padding: 60px 150px; 
-    border-radius: 16px; 
-    border: 2px solid #333333; 
-    text-align: center; 
-    box-shadow: 0 10px 30px rgba(0,0,0,1); 
-    background-color: #222222; 
-    overflow: hidden; 
+/* Variables generales del sitio: colores y tipografia que se usan en toda la tienda */
+:root {
+    --color-fondo: #111111;
+    --color-fondo-panel: #1a1a1a;
+    --color-fondo-tarjeta-oscura: #222222;
+    --color-borde: #333333;
+    --color-texto-claro: #ffffff;
+    --color-texto-tenue: #aaaaaa;
+    --color-texto-gris: #666666;
+    --color-acento: #ff6600;
+    --color-acento-hover: #cc5200;
+    --fuente-principal: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-.categoria-genero h2 { color: #ffffff; font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0,0,0,0.8); }
 
-/* Fondos (Solo Metal y Cumbia) */
+/* Reset basico y estilos generales del cuerpo de la pagina */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--fuente-principal); background-color: var(--color-fondo); color: var(--color-texto-claro); }
+
+/* Encabezado y menu de navegacion, se repite igual en todas las paginas */
+header { background-color: var(--color-fondo-panel); padding: 20px 0; border-bottom: 2px solid var(--color-acento); box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 50px; }
+
+.header-contenido { max-width: 1300px; margin: 0 auto; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+/* Logo y nombre de la tienda, a la izquierda del menu */
+.logo-tienda { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--color-texto-claro); font-size: 1.4rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.logo-tienda .icono-logo { font-size: 1.6rem; }
+
+nav { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+nav a { color: var(--color-texto-claro); text-decoration: none; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+nav a:hover { color: var(--color-acento); }
+
+/* Enlaces de cuenta de usuario y carrito, a la derecha del menu */
+.acciones-header { display: flex; align-items: center; gap: 20px; }
+
+.enlaces-cuenta { display: flex; align-items: center; gap: 15px; }
+.enlaces-cuenta a { color: var(--color-texto-tenue); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+.enlaces-cuenta a:hover { color: var(--color-acento); }
+
+.carrito-link { display: flex; align-items: center; gap: 8px; color: var(--color-texto-claro); text-decoration: none; font-weight: bold; }
+.carrito-link:hover { color: var(--color-acento); }
+.carrito-link .icono-carrito { font-size: 1.3rem; }
+.carrito-link .contador-carrito { background-color: var(--color-acento); color: var(--color-texto-claro); border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; }
+
+/* Seccion principal de bienvenida en la pagina de inicio, con texto e imagen */
+.hero-inicio { max-width: 1300px; margin: 0 auto 80px auto; padding: 0 30px; display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+.hero-texto { flex: 1; min-width: 280px; }
+.hero-texto h1 { font-size: 2.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+.hero-texto p { color: var(--color-texto-tenue); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
+.hero-imagen { flex: 1; min-width: 280px; }
+.hero-imagen img { width: 100%; border-radius: 16px; border: 2px solid var(--color-borde); box-shadow: 0 10px 30px rgba(0,0,0,1); }
+
+/* Boton principal usado en el banner de inicio */
+.btn-primario { display: inline-block; background-color: var(--color-acento); color: var(--color-texto-claro); text-decoration: none; padding: 14px 28px; border-radius: 4px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.3s ease; }
+.btn-primario:hover { background-color: var(--color-acento-hover); }
+
+/* Titulo de una seccion generica dentro del home, por ejemplo destacados */
+.titulo-seccion { max-width: 1300px; margin: 0 auto 30px auto; padding: 0 30px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px; }
+
+/* Secciones de generos musicales, usadas en el listado de productos */
+.categoria-genero {
+    max-width: 1300px;
+    margin: 0 auto 80px auto;
+    padding: 60px 150px;
+    border-radius: 16px;
+    border: 2px solid var(--color-borde);
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,1);
+    background-color: var(--color-fondo-tarjeta-oscura);
+    overflow: hidden;
+}
+.categoria-genero h2 { color: var(--color-texto-claro); font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0,0,0,0.8); }
+
+/* Imagenes de fondo para las secciones de metal y cumbia */
 #genero-metal { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/fondo-concierto1.jpg') center/cover no-repeat; }
 #genero-cumbia { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/cumbia-villera.webp') center/cover no-repeat; }
 
-/* Grilla y Tarjetas de Productos */
+/* Seccion de productos destacados en la pagina de inicio */
+.destacados { max-width: 1300px; margin: 0 auto 80px auto; padding: 0 30px; }
+
+/* Grilla y tarjetas de productos, se usa tanto en destacados como en el listado completo */
 .grilla-productos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 60px; text-align: left; }
-.tarjeta-producto { background-color: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+.tarjeta-producto { background-color: var(--color-texto-claro); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
 .tarjeta-producto img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-bottom: 1px solid #eaeaea; }
 
-/* Textos de la tarjeta */
+/* Textos dentro de cada tarjeta de producto */
 .tarjeta-producto h3 { font-size: 1rem; text-transform: uppercase; margin: 15px 15px 5px; color: #111; }
 .tarjeta-producto .artista, .tarjeta-producto .formato { font-size: 0.8rem; color: #666; margin: 0 15px 2px; }
 .tarjeta-producto .precio { font-size: 1.2rem; font-weight: bold; color: #000; margin: 10px 15px 15px; }
 
-/* Botón naranja */
-.tarjeta-producto .btn-ver { margin: auto 15px 15px auto; background-color: #ff6600; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-size: 0.9rem; font-weight: bold; transition: background-color 0.2s; }
-.tarjeta-producto .btn-ver:hover { background-color: #cc5200; }
+/* Boton naranja para ver el detalle de un producto */
+.tarjeta-producto .btn-ver { margin: auto 15px 15px auto; background-color: var(--color-acento); color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-size: 0.9rem; font-weight: bold; transition: background-color 0.2s; }
+.tarjeta-producto .btn-ver:hover { background-color: var(--color-acento-hover); }
 
-/* Footer */
-footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; border-top: 1px solid #333; }
+/* Pie de pagina, se repite igual en todas las paginas */
+footer { text-align: center; padding: 30px; color: var(--color-texto-gris); font-size: 0.9rem; border-top: 1px solid var(--color-borde); }
 
-/* PÁGINA INDIVIDUAL: DETALLE DE PRODUCTO*/
+/* Pagina individual de detalle de producto */
 .contenedor-detalle {
     max-width: 1000px;
     margin: 0 auto;
@@ -55,32 +106,32 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
 }
 
 .btn-volver {
-    background-color: #ff6600; 
-    color: #ffffff; 
-    text-decoration: none; 
-    padding: 8px 16px; 
-    border-radius: 4px; 
-    font-weight: bold; 
+    background-color: var(--color-acento);
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
 .btn-volver:hover {
-    background-color: #cc5200;
+    background-color: var(--color-acento-hover);
 }
 
-/* Ocultamos todos los discos por defecto */
+/* Por defecto se ocultan todos los discos del detalle */
 .detalle-grid {
-    display: none; 
+    display: none;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-    background-color: #222222;
+    background-color: var(--color-fondo-tarjeta-oscura);
     padding: 40px;
     border-radius: 16px;
-    border: 2px solid #333333;
+    border: 2px solid var(--color-borde);
     box-shadow: 0 10px 30px rgba(0,0,0,1);
 }
 
-/*  Solo se muestra el disco que coincida con el enlace (ej. #disco-beast) */
+/* Se muestra solo el disco que coincide con el enlace, por ejemplo el-disco-beast */
 .detalle-grid:target {
     display: grid;
 }
@@ -100,13 +151,13 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
 .detalle-info h2 {
     font-size: 2.5rem;
     margin-bottom: 5px;
-    color: #ff6600;
+    color: var(--color-acento);
     text-transform: uppercase;
 }
 
 .artista-detalle {
     font-size: 1.5rem;
-    color: #aaaaaa;
+    color: var(--color-texto-tenue);
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -115,15 +166,15 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 30px;
-    color: #ffffff;
+    color: var(--color-texto-claro);
 }
 
 .descripcion-corta {
     margin-bottom: 30px;
-    background-color: #1a1a1a;
+    background-color: var(--color-fondo-panel);
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #333333;
+    border: 1px solid var(--color-borde);
 }
 
 .descripcion-corta p {
@@ -137,7 +188,7 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
 
 .tracklist h3 {
     margin-bottom: 15px;
-    color: #ff6600;
+    color: var(--color-acento);
     text-transform: uppercase;
 }
 
@@ -153,7 +204,7 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
     gap: 15px;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #333333;
+    border-top: 1px solid var(--color-borde);
 }
 
 .acciones-compra input {
@@ -163,6 +214,6 @@ footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; bord
     text-align: center;
     border-radius: 4px;
     border: none;
-    background-color: #ffffff;
+    background-color: var(--color-texto-claro);
     color: #000000;
 }
