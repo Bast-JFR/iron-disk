@@ -56,6 +56,16 @@ nav a:hover { color: var(--color-acento); }
 /* Titulo de una seccion generica dentro del home, por ejemplo destacados */
 .titulo-seccion { max-width: 1300px; margin: 0 auto 30px auto; padding: 0 30px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px; }
 
+/* Seccion de presentacion en la pagina de Nosotros, texto centrado */
+.presentacion-nosotros { max-width: 900px; margin: 0 auto 80px auto; padding: 0 30px; text-align: center; }
+.presentacion-nosotros h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+.presentacion-nosotros p { color: var(--color-texto-tenue); font-size: 1.1rem; line-height: 1.6; }
+
+/* Bloques de contenido de la pagina Nosotros, cada uno con su titulo y texto */
+.bloque-nosotros { max-width: 900px; margin: 0 auto 60px auto; padding: 40px 30px; background-color: var(--color-fondo-tarjeta-oscura); border: 2px solid var(--color-borde); border-radius: 16px; }
+.bloque-nosotros h2 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-acento); margin-bottom: 15px; }
+.bloque-nosotros p { color: var(--color-texto-tenue); font-size: 1.05rem; line-height: 1.7; }
+
 /* Secciones de generos musicales, usadas en el listado de productos */
 .categoria-genero {
     max-width: 1300px;
