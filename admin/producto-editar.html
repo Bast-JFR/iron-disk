@@ -3,10 +3,118 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Disk - Administrador - Editar producto</title>
+    <title>Iron Disk Admin - Editar producto</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+
+    <!-- Encabezado del panel de administrador, mas simple que el de la tienda publica -->
+    <header>
+        <div class="header-contenido">
+
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk Admin</span>
+            </a>
+
+            <nav>
+                <a href="index.html">Panel</a>
+                <a href="productos.html">Productos</a>
+                <a href="usuarios.html">Usuarios</a>
+            </nav>
+
+            <a href="../index.html" class="enlace-volver-tienda">Ver tienda</a>
+
+        </div>
+    </header>
+
+    <main class="contenedor-admin">
+
+        <div class="cabecera-admin">
+            <h1>Editar producto</h1>
+            <a href="productos.html" class="btn-volver">← Volver al listado</a>
+        </div>
+
+        <!-- Mensaje que se muestra cuando el producto pasa la validacion -->
+        <div class="mensaje-confirmacion" id="mensaje-confirmacion">
+            ¡Cambios guardados correctamente!
+        </div>
+
+        <!-- Cuando exista el listado real de productos, aca falta precargar los datos
+             del producto elegido en estos mismos campos. Por ahora el formulario y las
+             validaciones son identicas a producto-nuevo.html -->
+        <form id="form-producto" class="formulario-producto" novalidate>
+
+            <div class="campo-formulario" id="campo-codigo">
+                <label for="codigo">Código del disco</label>
+                <input type="text" id="codigo" name="codigo" autocomplete="off" placeholder="Ej: IM-001 (mínimo 3 caracteres)">
+                <span class="mensaje-error"></span>
+            </div>
+
+            <div class="campo-formulario" id="campo-nombre">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" maxlength="100" placeholder="Ej: The Number of the Beast">
+                <span class="mensaje-error"></span>
+            </div>
+
+            <div class="campo-formulario" id="campo-descripcion">
+                <label for="descripcion">Descripción (opcional)</label>
+                <textarea id="descripcion" name="descripcion" maxlength="500" placeholder="Detalles del disco, edición, estado, etc."></textarea>
+                <div class="contador-caracteres"><span id="contador-descripcion">0</span>/500</div>
+                <span class="mensaje-error"></span>
+            </div>
+
+            <div class="fila-formulario">
+
+                <div class="campo-formulario" id="campo-precio">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" name="precio" min="0" step="0.01" placeholder="0 = producto FREE">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="campo-formulario" id="campo-stock">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" name="stock" min="0" step="1" placeholder="Cantidad disponible">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="campo-formulario" id="campo-stock-critico">
+                    <label for="stock-critico">Stock crítico (opcional)</label>
+                    <input type="number" id="stock-critico" name="stock-critico" min="0" step="1" placeholder="Avisa bajo este numero">
+                    <span class="mensaje-error"></span>
+                </div>
+
+            </div>
+
+            <!-- Aviso que aparece cuando el stock ingresado esta en el limite critico o por debajo -->
+            <div class="alerta-stock-critico" id="alerta-stock-critico">
+                ⚠️ El stock ingresado está en el límite crítico o por debajo. Este producto va a aparecer como bajo stock.
+            </div>
+
+            <div class="campo-formulario" id="campo-categoria">
+                <label for="categoria">Categoría</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Selecciona una categoría</option>
+                    <option value="metal">Metal</option>
+                    <option value="cumbia">Cumbia</option>
+                </select>
+                <span class="mensaje-error"></span>
+            </div>
+
+            <div class="campo-formulario" id="campo-imagen">
+                <label for="imagen">Imagen (opcional)</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+                <span class="mensaje-error"></span>
+            </div>
+
+            <button type="submit" class="btn-primario">Guardar cambios</button>
+
+        </form>
+
+    </main>
+
+    <!-- Validacion del formulario, compartida con producto-nuevo.html -->
+    <script src="../assets/js/producto-form.js"></script>
 
 </body>
 </html>
