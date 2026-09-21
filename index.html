@@ -8,5 +8,189 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Seccion de bienvenida con un texto de presentacion, un boton hacia el catalogo y una imagen -->
+        <section class="hero-inicio">
+            <div class="hero-texto">
+                <h1>Tu tienda de discos favorita</h1>
+                <p>Vinilos, CDs y cassettes de las mejores bandas de metal y cumbia. Encuentra ediciones originales y agrega tus favoritos al carrito.</p>
+                <a href="productos.html" class="btn-primario">Ver productos</a>
+            </div>
+            <div class="hero-imagen">
+                <img src="assets/img/maiden-beast.png" alt="The Number of the Beast, Iron Maiden">
+            </div>
+        </section>
+
+        <!-- Seccion con una seleccion de productos destacados de distintos generos -->
+        <section class="destacados">
+            <h2 class="titulo-seccion">Discos destacados</h2>
+            <div class="grilla-productos">
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/maiden-beast.png" alt="The Number of the Beast - Iron Maiden">
+                    <h3>The Number of the Beast</h3>
+                    <p class="artista">Iron Maiden</p>
+                    <p class="formato">Vinilo</p>
+                    <p class="precio">$32.990</p>
+                    <a href="producto-detalle/detalle-iron.html#disco-beast" class="btn-ver">Ver Detalles</a>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/meta1.png" alt="and justice for all - Metallica">
+                    <h3>and justice for all</h3>
+                    <p class="artista">Metallica</p>
+                    <p class="formato">Vinilo</p>
+                    <p class="precio">$35.990</p>
+                    <a href="producto-detalle/detalle-metallica.html#disco-justice" class="btn-ver">Ver Detalles</a>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/sla1.png" alt="Reign in Blood - Slayer">
+                    <h3>Reign in Blood</h3>
+                    <p class="artista">Slayer</p>
+                    <p class="formato">Vinilo</p>
+                    <p class="precio">$31.990</p>
+                    <a href="producto-detalle/detalle-slayer.html#disco-reign" class="btn-ver">Ver Detalles</a>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/damas1.png" alt="La gota que rebaso el vaso - Damas Gratis">
+                    <h3>La gota que rebaso el vaso</h3>
+                    <p class="artista">Damas Gratis</p>
+                    <p class="formato">CD</p>
+                    <p class="precio">$10.990</p>
+                    <a href="producto-detalle/detalle-damas.html#disco-negro" class="btn-ver">Ver Detalles</a>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/alegria1.png" alt="En vivo alegria pan de azucar - Grupo Alegria">
+                    <h3>En vivo alegria pan de azucar</h3>
+                    <p class="artista">Grupo Alegria</p>
+                    <p class="formato">Cassette</p>
+                    <p class="precio">$5.990</p>
+                    <a href="producto-detalle/detalle-alegria.html#disco-ladron" class="btn-ver">Ver Detalles</a>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="assets/img/hello1.png" alt="Keeper of the Seven Keys I - Helloween">
+                    <h3>Keeper of the Seven Keys I</h3>
+                    <p class="artista">Helloween</p>
+                    <p class="formato">CD</p>
+                    <p class="precio">$15.990</p>
+                    <a href="producto-detalle/detalle-helloween.html#disco-keeper1" class="btn-ver">Ver Detalles</a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
 </body>
 </html>
