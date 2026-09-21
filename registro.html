@@ -8,5 +8,197 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Formulario de registro de usuario, validado con JavaScript -->
+        <section class="seccion-auth">
+            <div class="tarjeta-auth tarjeta-auth-ancha">
+                <h1>Crea tu cuenta</h1>
+                <p class="subtitulo-auth">Completa tus datos para registrarte en Iron Disk.</p>
+
+                <!-- Mensaje que se muestra cuando el registro pasa la validacion -->
+                <div class="mensaje-confirmacion" id="mensaje-confirmacion">
+                    ¡Registro exitoso! Ya puedes iniciar sesión con tu cuenta.
+                </div>
+
+                <form id="form-registro" novalidate>
+
+                    <div class="campo-formulario" id="campo-run">
+                        <label for="run">RUN</label>
+                        <input type="text" id="run" name="run" maxlength="9" autocomplete="off" placeholder="Sin puntos ni guion. Ej: 19011022K">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" maxlength="50" autocomplete="given-name" placeholder="Ej: Juan">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-apellidos">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" maxlength="100" autocomplete="family-name" placeholder="Ej: Pérez Soto">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-correo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" maxlength="100" autocomplete="email" placeholder="Ej: juan.perez@duoc.cl">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-contrasena">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" id="contrasena" name="contrasena" maxlength="10" autocomplete="new-password" placeholder="Entre 4 y 10 caracteres">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-fecha-nacimiento">
+                        <label for="fecha-nacimiento">Fecha de nacimiento (opcional)</label>
+                        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-region">
+                        <label for="region">Región</label>
+                        <select id="region" name="region">
+                            <option value="">Selecciona una región</option>
+                        </select>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-comuna">
+                        <label for="comuna">Comuna</label>
+                        <select id="comuna" name="comuna" disabled>
+                            <option value="">Primero selecciona una región</option>
+                        </select>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-direccion">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" maxlength="300" autocomplete="street-address" placeholder="Ej: Av. Siempre Viva 742">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn-primario">Crear cuenta</button>
+
+                </form>
+
+                <p class="enlace-auth">¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Script de validacion del formulario de registro, incluye el calculo del digito verificador del RUN -->
+    <script src="assets/js/registro.js"></script>
+
 </body>
 </html>
