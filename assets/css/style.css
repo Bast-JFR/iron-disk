@@ -255,3 +255,76 @@ footer { background-color: var(--color-fondo-panel); color: var(--color-texto-gr
     background-color: var(--color-texto-claro);
     color: #000000;
 }
+
+/* Fila de cada disco dentro del carrito.html, pintada por assets/js/carrito.js */
+.carrito-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--color-fondo-panel);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.carrito-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Que la info del disco ocupe el espacio del medio y empuje el precio/boton a la derecha */
+.carrito-item-info {
+    flex: 1;
+}
+
+.carrito-item-info h3 {
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.carrito-item-info .artista {
+    color: var(--color-texto-tenue);
+    font-size: 0.9rem;
+}
+
+.carrito-item-cantidad {
+    color: var(--color-texto-tenue);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.carrito-item-subtotal {
+    color: var(--color-acento);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-quitar-item {
+    background-color: transparent;
+    border: 1px solid var(--color-texto-gris);
+    color: var(--color-texto-tenue);
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-quitar-item:hover {
+    border-color: var(--color-acento);
+    color: var(--color-acento);
+}
+
+.carrito-vacio {
+    text-align: center;
+    color: var(--color-texto-tenue);
+    padding: 40px 0;
+}
+
+.carrito-vacio a {
+    color: var(--color-acento);
+}
