@@ -8,5 +8,206 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Presentacion de la seccion de contacto -->
+        <section class="presentacion-contacto">
+            <h1>Contáctanos</h1>
+            <p>¿Tienes una consulta, sugerencia o quieres saber más sobre nuestro catálogo? Escríbenos y te responderemos a la brevedad.</p>
+        </section>
+
+        <div class="contenedor-contacto">
+
+            <!-- Formulario de contacto, validado con JavaScript -->
+            <section class="formulario-contacto">
+                <h2>Envíanos un mensaje</h2>
+
+                <!-- Mensaje que se muestra cuando el formulario se envia correctamente -->
+                <div class="mensaje-confirmacion" id="mensaje-confirmacion">
+                    ¡Gracias por escribirnos! Tu mensaje fue enviado correctamente.
+                </div>
+
+                <form id="form-contacto" novalidate>
+
+                    <div class="campo-formulario" id="campo-nombre">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" maxlength="100" autocomplete="name" placeholder="Ej: Juan Pérez">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-correo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" maxlength="100" autocomplete="email" placeholder="Ej: juan.perez@gmail.com">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-comentario">
+                        <label for="comentario">Comentario</label>
+                        <textarea id="comentario" name="comentario" maxlength="500" placeholder="Escribe tu mensaje aquí"></textarea>
+                        <div class="contador-caracteres"><span id="contador-comentario">0</span>/500</div>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn-primario">Enviar mensaje</button>
+
+                </form>
+            </section>
+
+            <!-- Informacion de contacto y ubicacion -->
+            <aside class="info-contacto">
+
+                <div class="bloque-nosotros">
+                    <h2>Información de contacto</h2>
+
+                    <div class="dato-contacto">
+                        <span class="icono-dato">📍</span>
+                        <div>
+                            <strong>Dirección</strong>
+                            <span>Av. Providencia 2124, local 15, Providencia, Santiago (a pasos del Metro Los Leones, sector El Caracol)</span>
+                        </div>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <span class="icono-dato">✉️</span>
+                        <div>
+                            <strong>Correo</strong>
+                            <span>ba.jofre@duocuc.cl / re.colipe@duocuc.cl</span>
+                        </div>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <span class="icono-dato">🕒</span>
+                        <div>
+                            <strong>Horario de atención</strong>
+                            <span>Lunes a sábado, de 10:00 a 20:00 hrs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa con la ubicacion de referencia de la tienda -->
+                <div class="mapa-contacto">
+                    <iframe
+                        src="https://www.google.com/maps?q=Metro+Los+Leones,+Providencia,+Santiago&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ubicación de Iron Disk cerca de Metro Los Leones">
+                    </iframe>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Script de validacion del formulario de contacto -->
+    <script src="assets/js/contacto.js"></script>
+
 </body>
 </html>

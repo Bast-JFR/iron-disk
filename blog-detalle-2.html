@@ -8,5 +8,156 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Imagen principal del blog -->
+        <div class="detalle-blog-cabecera">
+            <img src="https://images.unsplash.com/photo-1621886292650-520f76c747d6?w=1200&q=80" alt="Persona limpiando un disco de vinilo">
+        </div>
+
+        <!-- Cuerpo del articulo -->
+        <article class="detalle-blog-contenido">
+            <span class="blog-categoria">Guia</span>
+            <h1>Cuida y manten tu vinilo y tocadiscos</h1>
+
+            <p>Un vinilo bien cuidado puede durar generaciones sin perder calidad de sonido. El problema es que muchos de los errores que dañan un disco parecen inofensivos: guardarlo mal, limpiarlo con lo que sea, o dejar la aguja del tocadiscos sucia. Acá te dejamos los cuidados básicos para que tu colección se mantenga en las mejores condiciones.</p>
+
+            <h2>Cómo limpiar tus discos</h2>
+            <ul>
+                <li>Usá siempre un cepillo antiestático de fibra de carbono, pasándolo en el sentido de los surcos, nunca en círculos.</li>
+                <li>Si el disco está muy sucio, existen líquidos limpiadores específicos para vinilo. Nunca uses agua con jabón común ni alcohol, pueden dañar el surco.</li>
+                <li>Limpiá el disco antes de guardarlo, no solo antes de escucharlo. El polvo acumulado con el tiempo es lo que más rayaduras genera.</li>
+            </ul>
+
+            <h2>Cómo guardarlos correctamente</h2>
+            <ul>
+                <li>Guardá los discos siempre en posición vertical, nunca apilados uno sobre otro ni acostados, para evitar que se deformen con el peso.</li>
+                <li>Usá fundas internas antiestáticas además de la funda original, protegen mucho mejor de rayaduras y polvo.</li>
+                <li>Evitá lugares con humedad, calor directo o luz solar constante. El calor puede deformar el vinilo de forma irreversible.</li>
+            </ul>
+
+            <h2>Mantenimiento del tocadiscos</h2>
+            <ul>
+                <li>Limpiá la aguja regularmente con un cepillo suave especial para agujas, moviendo de atrás hacia adelante.</li>
+                <li>Revisá que el peso del brazo esté bien calibrado. Un peso incorrecto hace que la aguja presione de más y desgaste tus discos más rápido.</li>
+                <li>Mantené la tapa cerrada cuando no lo uses, para que no se acumule polvo sobre el plato y la aguja.</li>
+            </ul>
+
+            <h2>Errores comunes que hay que evitar</h2>
+            <p>Tocar la superficie del vinilo con los dedos, dejar discos fuera de su funda por mucho tiempo, o forzar la aguja al ponerla son los errores más comunes que arruinan una colección. Con estos cuidados simples, tus discos y tu tocadiscos te van a acompañar por muchos años.</p>
+
+            <div class="navegacion-volver">
+                <a href="blogs.html" class="btn-volver">← Volver a blogs</a>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
 </body>
 </html>
