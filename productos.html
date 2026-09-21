@@ -8,12 +8,38 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
     <header>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="carrito.html">Carrito</a>
-        </nav>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
     </header>
 
       <!--SECCION METAL  -->
@@ -27,7 +53,7 @@
                     <p class="artista">Iron Maiden</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$32.990</p>
-                    <a href="producto-detalle/detalle-iron.html#disco-beast" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-iron.html#disco-beast" class="btn-ver">Comprar</a>
 
 
                 </article>
@@ -37,7 +63,7 @@
                     <p class="artista">Iron Maiden</p>
                     <p class="formato">CD</p>
                     <p class="precio">$16.990</p>
-                    <a href="producto-detalle/detalle-iron.html#disco-powerslave" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-iron.html#disco-powerslave" class="btn-ver">Comprar</a>
                 </article>
 
                
@@ -48,7 +74,7 @@
                     <p class="artista">Metallica</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$35.990</p>
-                    <a href="producto-detalle/detalle-metallica.html#disco-justice" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-metallica.html#disco-justice" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/meta2.png" alt="ride the lightning - Metallica">
@@ -56,7 +82,7 @@
                     <p class="artista">Metallica</p>
                     <p class="formato">CD</p>
                     <p class="precio">$18.990</p>
-                    <a href="producto-detalle/detalle-metallica.html#disco-lightning" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-metallica.html#disco-lightning" class="btn-ver">Comprar</a>
                 </article>
 
                
@@ -67,7 +93,7 @@
                     <p class="artista">Megadeth</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$29.990</p>
-                    <a href="producto-detalle/detalle-megadeth.html#disco-rust" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-megadeth.html#disco-rust" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/mega2.png" alt="Peace Sells - Megadeth">
@@ -75,7 +101,7 @@
                     <p class="artista">Megadeth</p>
                     <p class="formato">CD</p>
                     <p class="precio">$15.990</p>
-                    <a href="producto-detalle/detalle-megadeth.html#disco-peace" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-megadeth.html#disco-peace" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Anthrax -->
@@ -85,7 +111,7 @@
                     <p class="artista">Anthrax</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$27.990</p>
-                    <a href="producto-detalle/detalle-anthrax.html#disco-among" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-anthrax.html#disco-among" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/ant2.png" alt="Spreading the Disease - Anthrax">
@@ -93,7 +119,7 @@
                     <p class="artista">Anthrax</p>
                     <p class="formato">CD</p>
                     <p class="precio">$14.990</p>
-                    <a href="producto-detalle/detalle-anthrax.html#disco-spreading" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-anthrax.html#disco-spreading" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Slayer -->
@@ -103,7 +129,7 @@
                     <p class="artista">Slayer</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$31.990</p>
-                    <a href="producto-detalle/detalle-slayer.html#disco-reign" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-slayer.html#disco-reign" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/sla2.png" alt="Show No Mercy - Slayer">
@@ -111,7 +137,7 @@
                     <p class="artista">Slayer</p>
                     <p class="formato">Cassette</p>
                     <p class="precio">$11.990</p>
-                    <a href="producto-detalle/detalle-slayer.html#disco-show" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-slayer.html#disco-show" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Helloween -->
@@ -121,7 +147,7 @@
                     <p class="artista">Helloween</p>
                     <p class="formato">CD</p>
                     <p class="precio">$15.990</p>
-                    <a href="producto-detalle/detalle-helloween.html#disco-keeper1" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-helloween.html#disco-keeper1" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/hello2.png" alt="Keeper of the Seven Keys Pt 2 - Helloween">
@@ -129,7 +155,7 @@
                     <p class="artista">Helloween</p>
                     <p class="formato">Vinilo</p>
                     <p class="precio">$28.990</p>
-                    <a href="producto-detalle/detalle-helloween.html#disco-keeper2" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-helloween.html#disco-keeper2" class="btn-ver">Comprar</a>
                 </article>
             </div>
         </section>
@@ -148,15 +174,15 @@
                     <p class="artista">Pibes Chorros</p>
                     <p class="formato">CD</p>
                     <p class="precio">$9.990</p>
-                    <a href="producto-detalle/detalle-pibes.html#disco-manos" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-pibes.html#disco-manos" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/pibe2.png" alt="En vivo...Hasta la muerte - Pibes Chorros">
                     <h3>En vivo...Hasta la muerte</h3>
                     <p class="artista">Pibes Chorros</p>
                     <p class="formato">Cassette</p>
-                    <p class="precio">$6.990</p>
-                    <a href="producto-detalle/detalle-pibes.html#disco-dios" class="btn-ver">Ver Detalles</a>
+                    <p class="precio">$10.990</p>
+                    <a href="producto-detalle/detalle-pibes.html#disco-dios" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Damas Gratis -->
@@ -166,7 +192,7 @@
                     <p class="artista">Damas Gratis</p>
                     <p class="formato">CD</p>
                     <p class="precio">$10.990</p>
-                    <a href="producto-detalle/detalle-damas.html#disco-negro" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-damas.html#disco-negro" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/damas2.png" alt="100% Negro Cumbiero - Damas Gratis">
@@ -174,7 +200,7 @@
                     <p class="artista">Damas Gratis</p>
                     <p class="formato">CD</p>
                     <p class="precio">$11.990</p>
-                    <a href="producto-detalle/detalle-damas.html#disco-gota" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-damas.html#disco-gota" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Grupo Alegria -->
@@ -184,7 +210,7 @@
                     <p class="artista">Grupo Alegría</p>
                     <p class="formato">Cassette</p>
                     <p class="precio">$5.990</p>
-                    <a href="producto-detalle/detalle-alegria.html#disco-ladron" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-alegria.html#disco-ladron" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/alegria2.png" alt="El nuevo tropical - Grupo Alegría">
@@ -192,7 +218,7 @@
                     <p class="artista">Grupo Alegría</p>
                     <p class="formato">CD</p>
                     <p class="precio">$8.990</p>
-                    <a href="producto-detalle/detalle-alegria.html#disco-envivo" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-alegria.html#disco-envivo" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Tropi-Ka'l Sound -->
@@ -202,7 +228,7 @@
                     <p class="artista">Tropi-ka'l Sound</p>
                     <p class="formato">CD</p>
                     <p class="precio">$9.990</p>
-                    <a href="producto-detalle/detalle-tropikal.html#disco-exitos" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-tropikal.html#disco-exitos" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/tropikal2.png" alt="Tropi-ka'l Sound - Tropi-ka'l Sound">
@@ -210,7 +236,7 @@
                     <p class="artista">Tropi-ka'l Sound</p>
                     <p class="formato">Cassette</p>
                     <p class="precio">$7.990</p>
-                    <a href="producto-detalle/detalle-tropikal.html#disco-ritmo" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-tropikal.html#disco-ritmo" class="btn-ver">Comprar</a>
                 </article>
 
                 <!-- Amar Azul -->
@@ -220,7 +246,7 @@
                     <p class="artista">Amar Azul</p>
                     <p class="formato">CD</p>
                     <p class="precio">$12.990</p>
-                    <a href="producto-detalle/detalle-amar.html#disco-nena" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-amar.html#disco-nena" class="btn-ver">Comprar</a>
                 </article>
                 <article class="tarjeta-producto">
                     <img src="assets/img/amar2.png" alt="Dime Azul - Amar Azul">
@@ -228,13 +254,83 @@
                     <p class="artista">Amar Azul</p>
                     <p class="formato">CD</p>
                     <p class="precio">$11.990</p>
-                    <a href="producto-detalle/detalle-amar.html#disco-gracias" class="btn-ver">Ver Detalles</a>
+                    <a href="producto-detalle/detalle-amar.html#disco-gracias" class="btn-ver">Comprar</a>
                 </article>
             </div>
         </section>
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
     <footer>
-        <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
     </footer>
 
+    <!-- Conecta el carrito guardado en localStorage para que el numerito del header quede actualizado -->
+    <script src="assets/js/carrito.js"></script>
 </body>
 </html>
