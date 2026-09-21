@@ -8,5 +8,150 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Presentacion de la seccion de blogs -->
+        <section class="presentacion-blogs">
+            <h1>Blog Iron Disk</h1>
+            <p>Historias, guias y curiosidades para quienes viven la musica en formato fisico.</p>
+        </section>
+
+        <!-- Listado de entradas del blog -->
+        <section class="lista-blogs">
+
+            <article class="tarjeta-blog">
+                <div class="blog-imagen">
+                    <img src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=800&q=80" alt="Vinilo girando en un tocadiscos">
+                </div>
+                <div class="blog-info">
+                    <span class="blog-categoria">Cultura</span>
+                    <h2>El regreso del vinilo</h2>
+                    <p class="blog-resumen">El streaming lo puede tener todo al instante, pero cada vez mas personas vuelven a elegir el vinilo. Te contamos por que este formato, que muchos daban por muerto, hoy vende mas que nunca y que tiene para ofrecer que ningun archivo digital puede igualar.</p>
+                    <a href="blog-detalle-1.html" class="btn-ver">Leer mas</a>
+                </div>
+            </article>
+
+            <article class="tarjeta-blog">
+                <div class="blog-imagen">
+                    <img src="https://images.unsplash.com/photo-1621886292650-520f76c747d6?w=800&q=80" alt="Persona limpiando un disco de vinilo">
+                </div>
+                <div class="blog-info">
+                    <span class="blog-categoria">Guia</span>
+                    <h2>Cuida y manten tu vinilo y tocadiscos</h2>
+                    <p class="blog-resumen">Un vinilo bien cuidado puede sonar perfecto durante decadas, pero un mal habito puede arruinarlo en segundos. Reunimos los cuidados basicos para limpiar tus discos, guardarlos correctamente y mantener tu tocadiscos funcionando como el primer dia.</p>
+                    <a href="blog-detalle-2.html" class="btn-ver">Leer mas</a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
 </body>
 </html>
