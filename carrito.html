@@ -7,6 +7,62 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
 
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Aquí está la famosa etiqueta <main> envolviendo el carrito -->
+    <main class="contenedor-detalle">
+        <h1 style="text-align: center; color: #ff6600; margin-bottom: 40px; text-transform: uppercase;">
+            Tu Carrito de Compras
+        </h1>
+
+        <!-- Esta es la caja vacía donde el JS inyectará los discos -->
+        <div id="contenedor-items-carrito"></div>
+
+        <!-- Sección del total a pagar -->
+        <div style="background-color: #222; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: right; border: 2px solid #333;">
+            <h2>Total a Pagar: <span style="color: #ff6600;">$<span id="total-carrito">0</span></span></h2>
+            <button class="btn-primario" style="margin-top: 15px; font-size: 1.2rem;">Proceder al Pago</button>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Esto conecta la página con tu archivo JavaScript (crucial para que funcione) -->
+    <script src="assets/js/carrito.js"></script>
 </body>
 </html>
