@@ -8,5 +8,143 @@
 </head>
 <body>
 
+    <!-- Encabezado con el logo, el menu principal y los accesos de usuario y carrito -->
+    <header>
+        <div class="header-contenido">
+
+            <!-- Logo y nombre de la tienda, lleva de vuelta al inicio -->
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk</span>
+            </a>
+
+            <!-- Menu principal con los enlaces a las secciones de la tienda -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="productos.html">Productos</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <!-- Enlaces de cuenta de usuario y acceso al carrito de compras -->
+            <div class="acciones-header">
+                <div class="enlaces-cuenta">
+                    <a href="login.html">Iniciar sesion</a>
+                    <a href="registro.html">Registrarse</a>
+                </div>
+                <a href="carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span class="contador-carrito">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Imagen principal del blog -->
+        <div class="detalle-blog-cabecera">
+            <img src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=1200&q=80" alt="Vinilo girando en un tocadiscos">
+        </div>
+
+        <!-- Cuerpo del articulo -->
+        <article class="detalle-blog-contenido">
+            <span class="blog-categoria">Cultura</span>
+            <h1>El regreso del vinilo</h1>
+
+            <p>Durante años el vinilo fue considerado un formato del pasado, algo que solo sobrevivía en las estanterías de coleccionistas nostálgicos. Sin embargo, en la última década las ventas de discos de vinilo no han dejado de crecer, incluso superando en algunos mercados a las ventas de CD. En Iron Disk vemos ese regreso todos los días: cada vez más clientes eligen llevarse el disco físico, y no solo por nostalgia.</p>
+
+            <h2>Por qué el streaming no reemplaza al vinilo</h2>
+            <p>El streaming ganó por comodidad: cualquier canción, en cualquier momento, sin ocupar espacio. Pero esa misma facilidad hizo que la música se volviera algo de fondo, algo que suena mientras hacemos otra cosa. El vinilo obliga a lo contrario: elegís un disco, lo sacás de su funda, lo ponés con cuidado, y te sentás a escucharlo de principio a fin, tal como el artista lo pensó. Es una experiencia que exige atención, y por eso mismo se siente distinta.</p>
+
+            <h2>El sonido y el objeto</h2>
+            <p>Muchos coleccionistas hablan de un sonido más cálido en el vinilo, con matices que el audio comprimido de streaming no siempre logra transmitir. Pero más allá de la discusión técnica, hay algo innegable: el vinilo es un objeto. Tiene una portada grande para admirar, un peso real en las manos, y ese ritual de bajar la aguja que ningún clic en una pantalla puede replicar.</p>
+
+            <h2>Una nueva generación de coleccionistas</h2>
+            <p>Lo interesante es que este regreso no lo están liderando solo quienes vivieron la época dorada del vinilo. Cada vez más jóvenes, que crecieron con el streaming como única forma de escuchar música, empiezan a armar su propia colección. Buscan ediciones especiales, colores limitados, y discos de bandas que descubrieron justamente gracias al streaming.</p>
+
+            <p>En Iron Disk seguimos sumando títulos de vinilo, tanto de clásicos imprescindibles como de ediciones especiales, para acompañar a quienes ya son parte de este regreso y a quienes recién empiezan a descubrirlo.</p>
+
+            <div class="navegacion-volver">
+                <a href="blogs.html" class="btn-volver">← Volver a blogs</a>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Pie de pagina, se repite igual en todas las paginas -->
+    <footer>
+
+        <!-- Frase de bienvenida de la tienda -->
+        <!-- Las redes sociales se agregan mas adelante, cuando se definan bien las cuentas y el estilo de los iconos -->
+        <div class="footer-superior">
+            <p>Iron Disk es tu tienda de confianza para coleccionistas de vinilos, CDs y cassettes.</p>
+        </div>
+
+        <!-- Columnas con los enlaces principales del sitio, agrupados por tema -->
+        <div class="footer-columnas">
+
+            <div class="footer-columna">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="productos.html#genero-metal">Metal</a></li>
+                    <li><a href="productos.html#genero-cumbia">Cumbia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Se conecta al formulario real con datos y CV en la rama de contacto -->
+                    <li><a href="contacto.html">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Cuenta</h3>
+                <ul>
+                    <li><a href="login.html">Iniciar sesion</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Selector de idioma desplegable, hecho con details y summary para que no necesite JavaScript -->
+        <div class="footer-idiomas">
+            <details class="selector-idioma">
+                <summary>Espanol</summary>
+                <ul>
+                    <li><a href="#">Espanol</a></li>
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- Copyright y enlaces legales -->
+        <div class="footer-inferior">
+            <p>&copy; 2026 Iron Disk. Todos los derechos reservados.</p>
+            <div class="footer-legales">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politica de privacidad</a>
+            </div>
+        </div>
+
+    </footer>
+
 </body>
 </html>
