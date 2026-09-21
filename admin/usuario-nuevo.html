@@ -8,5 +8,133 @@
 </head>
 <body>
 
+    <!-- Panel de administrador: menu lateral fijo a la izquierda y contenido a la derecha -->
+    <div class="panel-admin">
+
+        <!-- Menu vertical del panel -->
+        <aside class="sidebar-admin">
+
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk Admin</span>
+            </a>
+
+            <nav>
+                <ul class="menu-sidebar">
+                    <li><a href="index.html">Panel</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="usuarios.html" class="enlace-activo">Usuarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-pie">
+                <a href="../index.html">← Ver tienda</a>
+            </div>
+
+        </aside>
+
+        <!-- Contenido principal del panel -->
+        <main class="contenido-admin">
+
+            <div class="cabecera-admin">
+                <h1>Nuevo usuario</h1>
+                <a href="usuarios.html" class="btn-volver">← Volver al listado</a>
+            </div>
+
+            <!-- Mensaje que se muestra cuando el usuario pasa la validacion -->
+            <div class="mensaje-confirmacion" id="mensaje-confirmacion">
+                ¡Usuario guardado correctamente!
+            </div>
+
+            <form id="form-usuario" class="formulario-producto" novalidate>
+
+                <div class="fila-formulario">
+
+                    <div class="campo-formulario" id="campo-run">
+                        <label for="run">RUN</label>
+                        <input type="text" id="run" name="run" autocomplete="off" placeholder="Sin puntos ni guión. Ej: 19011022K">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-tipo-usuario">
+                        <label for="tipo-usuario">Tipo de usuario</label>
+                        <select id="tipo-usuario" name="tipo-usuario">
+                            <option value="">Selecciona un tipo</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Vendedor">Vendedor</option>
+                            <option value="Cliente">Cliente</option>
+                        </select>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                </div>
+
+                <div class="fila-formulario">
+
+                    <div class="campo-formulario" id="campo-nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" maxlength="50" placeholder="Ej: Bastián">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-apellidos">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" maxlength="100" placeholder="Ej: Jofré Pérez">
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                </div>
+
+                <div class="campo-formulario" id="campo-correo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" maxlength="100" placeholder="Ej: nombre@duocuc.cl">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="campo-formulario" id="campo-fecha-nacimiento">
+                    <label for="fecha-nacimiento">Fecha de nacimiento (opcional)</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="fila-formulario">
+
+                    <div class="campo-formulario" id="campo-region">
+                        <label for="region">Región</label>
+                        <select id="region" name="region">
+                            <option value="">Selecciona una región</option>
+                        </select>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                    <div class="campo-formulario" id="campo-comuna">
+                        <label for="comuna">Comuna</label>
+                        <select id="comuna" name="comuna" disabled>
+                            <option value="">Primero selecciona una región</option>
+                        </select>
+                        <span class="mensaje-error"></span>
+                    </div>
+
+                </div>
+
+                <div class="campo-formulario" id="campo-direccion">
+                    <label for="direccion">Dirección</label>
+                    <textarea id="direccion" name="direccion" maxlength="300" placeholder="Calle, número, depto/casa"></textarea>
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <button type="submit" class="btn-primario">Crear usuario</button>
+
+            </form>
+
+        </main>
+
+    </div>
+
+    <script src="../assets/js/usuarios-admin.js"></script>
+    <script src="../assets/js/regiones-comunas.js"></script>
+    <script src="../assets/js/usuario-form.js"></script>
+    <script src="../assets/js/admin-usuario-nuevo.js"></script>
+
 </body>
 </html>
