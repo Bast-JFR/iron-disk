@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var campoNombre = document.getElementById('nombre');
     var campoDescripcion = document.getElementById('descripcion');
     var contadorDescripcion = document.getElementById('contador-descripcion');
+    var campoArtista = document.getElementById('artista');
+    var campoFormato = document.getElementById('formato');
     var campoPrecio = document.getElementById('precio');
     var campoStock = document.getElementById('stock');
     var campoStockCritico = document.getElementById('stock-critico');
@@ -80,6 +82,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function actualizarContadorDescripcion() {
         contadorDescripcion.textContent = campoDescripcion.value.length;
+    }
+
+    // Valida el artista: requerido, maximo 100 caracteres
+    function validarArtista() {
+        var valor = campoArtista.value.trim();
+
+        if (valor === '') {
+            mostrarError(campoArtista, 'Ingresa el artista del disco.');
+            return false;
+        }
+        if (valor.length > 100) {
+            mostrarError(campoArtista, 'El artista no puede superar los 100 caracteres.');
+            return false;
+        }
+
+        quitarError(campoArtista);
+        return true;
+    }
+
+    // Valida el formato: requerido
+    function validarFormato() {
+        if (campoFormato.value === '') {
+            mostrarError(campoFormato, 'Selecciona un formato.');
+            return false;
+        }
+
+        quitarError(campoFormato);
+        return true;
     }
 
     // Valida el precio: requerido, minimo 0 (un precio de 0 es un producto FREE), acepta decimales
@@ -186,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
         actualizarContadorDescripcion();
         validarDescripcion();
     });
+    campoArtista.addEventListener('input', validarArtista);
+    campoFormato.addEventListener('change', validarFormato);
     campoPrecio.addEventListener('input', validarPrecio);
     campoStock.addEventListener('input', validarStock);
     campoStockCritico.addEventListener('input', validarStockCritico);
@@ -197,13 +229,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var codigoValido = validarCodigo();
         var nombreValido = validarNombre();
         var descripcionValida = validarDescripcion();
+        var artistaValido = validarArtista();
+        var formatoValido = validarFormato();
         var precioValido = validarPrecio();
         var stockValido = validarStock();
         var stockCriticoValido = validarStockCritico();
         var categoriaValida = validarCategoria();
 
-        var todoValido = codigoValido && nombreValido && descripcionValida && precioValido &&
-            stockValido && stockCriticoValido && categoriaValida;
+        var todoValido = codigoValido && nombreValido && descripcionValida && artistaValido &&
+            formatoValido && precioValido && stockValido && stockCriticoValido && categoriaValida;
 
         if (todoValido) {
             mensajeConfirmacion.classList.add('visible');
@@ -211,6 +245,10 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 mensajeConfirmacion.classList.remove('visible');
             }, 4000);
+
+            // Avisa que el formulario paso la validacion, para que otros scripts
+            // (como el guardado en localStorage) puedan reaccionar sin repetir estas reglas
+            formulario.dispatchEvent(new CustomEvent('producto-guardado'));
         } else {
             mensajeConfirmacion.classList.remove('visible');
         }

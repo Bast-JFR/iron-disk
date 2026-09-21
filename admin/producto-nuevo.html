@@ -63,6 +63,27 @@
 
             <div class="fila-formulario">
 
+                <div class="campo-formulario" id="campo-artista">
+                    <label for="artista">Artista</label>
+                    <input type="text" id="artista" name="artista" maxlength="100" placeholder="Ej: Iron Maiden">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="campo-formulario" id="campo-formato">
+                    <label for="formato">Formato</label>
+                    <select id="formato" name="formato">
+                        <option value="">Selecciona un formato</option>
+                        <option value="Vinilo">Vinilo</option>
+                        <option value="CD">CD</option>
+                        <option value="Cassette">Cassette</option>
+                    </select>
+                    <span class="mensaje-error"></span>
+                </div>
+
+            </div>
+
+            <div class="fila-formulario">
+
                 <div class="campo-formulario" id="campo-precio">
                     <label for="precio">Precio</label>
                     <input type="number" id="precio" name="precio" min="0" step="0.01" placeholder="0 = producto FREE">
@@ -110,8 +131,14 @@
 
     </main>
 
+    <!-- Funciones para leer y guardar productos en localStorage -->
+    <script src="../assets/js/productos-admin.js"></script>
+
     <!-- Validacion del formulario, compartida con producto-editar.html -->
     <script src="../assets/js/producto-form.js"></script>
+
+    <!-- Guarda el producto nuevo cuando el formulario pasa la validacion -->
+    <script src="../assets/js/admin-producto-nuevo.js"></script>
 
 </body>
 </html>

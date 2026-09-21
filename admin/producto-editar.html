@@ -30,6 +30,12 @@
 
     <main class="contenedor-admin">
 
+        <!-- Vista previa del producto que se esta editando, se llena con JavaScript -->
+        <div class="vista-previa-producto" id="vista-previa-producto">
+            <img id="vista-previa-imagen" src="" alt="Imagen actual del producto">
+            <span id="vista-previa-texto">Cargando producto...</span>
+        </div>
+
         <div class="cabecera-admin">
             <h1>Editar producto</h1>
             <a href="productos.html" class="btn-volver">← Volver al listado</a>
@@ -40,14 +46,14 @@
             ¡Cambios guardados correctamente!
         </div>
 
-        <!-- Cuando exista el listado real de productos, aca falta precargar los datos
-             del producto elegido en estos mismos campos. Por ahora el formulario y las
-             validaciones son identicas a producto-nuevo.html -->
+        <!-- El formulario se precarga con los datos del producto segun el codigo en la URL,
+             usando assets/js/admin-producto-editar.js. Las validaciones son las mismas
+             de producto-nuevo.html, definidas en assets/js/producto-form.js -->
         <form id="form-producto" class="formulario-producto" novalidate>
 
             <div class="campo-formulario" id="campo-codigo">
                 <label for="codigo">Código del disco</label>
-                <input type="text" id="codigo" name="codigo" autocomplete="off" placeholder="Ej: IM-001 (mínimo 3 caracteres)">
+                <input type="text" id="codigo" name="codigo" autocomplete="off" readonly placeholder="Ej: IM-001 (mínimo 3 caracteres)">
                 <span class="mensaje-error"></span>
             </div>
 
@@ -62,6 +68,27 @@
                 <textarea id="descripcion" name="descripcion" maxlength="500" placeholder="Detalles del disco, edición, estado, etc."></textarea>
                 <div class="contador-caracteres"><span id="contador-descripcion">0</span>/500</div>
                 <span class="mensaje-error"></span>
+            </div>
+
+            <div class="fila-formulario">
+
+                <div class="campo-formulario" id="campo-artista">
+                    <label for="artista">Artista</label>
+                    <input type="text" id="artista" name="artista" maxlength="100" placeholder="Ej: Iron Maiden">
+                    <span class="mensaje-error"></span>
+                </div>
+
+                <div class="campo-formulario" id="campo-formato">
+                    <label for="formato">Formato</label>
+                    <select id="formato" name="formato">
+                        <option value="">Selecciona un formato</option>
+                        <option value="Vinilo">Vinilo</option>
+                        <option value="CD">CD</option>
+                        <option value="Cassette">Cassette</option>
+                    </select>
+                    <span class="mensaje-error"></span>
+                </div>
+
             </div>
 
             <div class="fila-formulario">
@@ -113,8 +140,14 @@
 
     </main>
 
+    <!-- Funciones para leer y guardar productos en localStorage -->
+    <script src="../assets/js/productos-admin.js"></script>
+
     <!-- Validacion del formulario, compartida con producto-nuevo.html -->
     <script src="../assets/js/producto-form.js"></script>
+
+    <!-- Precarga los datos del producto segun el codigo de la URL, y guarda los cambios al enviar -->
+    <script src="../assets/js/admin-producto-editar.js"></script>
 
 </body>
 </html>
