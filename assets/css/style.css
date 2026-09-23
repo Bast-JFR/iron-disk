@@ -68,7 +68,6 @@ nav a:hover { color: var(--color-acento); }
 
 /* Video de presentacion en la pagina Nosotros */
 .video-nosotros { max-width: 900px; margin: 0 auto 60px auto; padding: 0 30px; text-align: center; }
-.video-nosotros h2 { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-acento); margin-bottom: 20px; }
 
 .video-nosotros video { width: 100%; border-radius: 16px; border: 2px solid var(--color-borde); box-shadow: 0 10px 30px rgba(0,0,0,1); background-color: #000000; }
 
