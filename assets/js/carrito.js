@@ -58,7 +58,7 @@ function guardarEnLocalStorage(producto) {
     localStorage.setItem('carritoIronDisk', JSON.stringify(carrito));
 
     // D. Damos un aviso visual para que el usuario sepa que funcionó
-    alert(`¡Añadiste ${producto.cantidad} unidad(es) de "${producto.titulo}" al carrito!`);
+    alert(`¡AGREGASTE UN GRAN DISCO! "${producto.titulo}" x${producto.cantidad} al carrito.`);
 
     // E. Refrescamos el numerito del header por si ya estoy viendo el carrito abierto en otra pestaña
     actualizarContadorCarrito();
