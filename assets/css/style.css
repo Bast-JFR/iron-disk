@@ -14,7 +14,7 @@
 
 /* Reset basico y estilos generales del cuerpo de la pagina */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--fuente-principal); background-color: var(--color-fondo); color: var(--color-texto-claro); }
+body { font-family: var(--fuente-principal); background-color: var(--color-fondo); color: var(--color-texto-claro); overflow-x: hidden; }
 
 /* Encabezado y menu de navegacion, se repite igual en todas las paginas */
 header { background-color: var(--color-fondo-panel); padding: 20px 0; border-bottom: 2px solid var(--color-acento); box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 50px; }
@@ -89,7 +89,7 @@ nav a:hover { color: var(--color-acento); }
 .tarjeta-blog .blog-resumen { color: var(--color-texto-tenue); font-size: 1rem; line-height: 1.6; margin-bottom: 25px; }
 
 /* En pantallas angostas, la tarjeta de blog pasa de horizontal a vertical */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .tarjeta-blog { flex-direction: column; }
     .tarjeta-blog .blog-imagen { flex: none; height: 220px; }
 }
@@ -522,3 +522,75 @@ footer { background-color: var(--color-fondo-panel); color: var(--color-texto-gr
 .btn-editar-tabla:hover { background-color: var(--color-acento); color: var(--color-texto-claro); }
 .btn-eliminar-tabla { background-color: transparent; border: 1px solid #e04444; color: #e04444; }
 .btn-eliminar-tabla:hover { background-color: #e04444; color: var(--color-texto-claro); }
+
+/* Ajustes para que todo el sitio se vea bien en celulares y tablets chicas */
+@media (max-width: 768px) {
+
+    /* Titulos de seccion un poco mas chicos para que no se vean forzados en celular */
+    .presentacion-nosotros h1,
+    .presentacion-blogs h1,
+    .presentacion-contacto h1,
+    .detalle-blog-contenido h1 { font-size: 1.9rem; }
+
+    /* Vista previa del producto/usuario en edicion: se apila si el texto no entra en una linea */
+    .vista-previa-producto { flex-wrap: wrap; }
+
+    /* Header: el logo y el carrito quedan arriba, el menu y los accesos se apilan debajo */
+    .header-contenido { justify-content: center; text-align: center; padding: 0 20px; }
+    nav { justify-content: center; gap: 20px; }
+    .acciones-header { flex-direction: column; gap: 10px; }
+
+    /* Hero del home: texto e imagen en columna, imagen primero se ve mejor en celular */
+    .hero-inicio { flex-direction: column; text-align: center; gap: 30px; padding: 0 20px; }
+    .hero-texto { min-width: 0; width: 100%; }
+    .hero-texto h1 { font-size: 1.6rem; letter-spacing: 1px; overflow-wrap: break-word; }
+    .hero-texto p { font-size: 1rem; }
+    .hero-imagen { min-width: 0; width: 100%; max-width: 100%; }
+    .hero-imagen img { max-width: 100%; }
+
+    /* Secciones de genero (metal/cumbia): menos padding lateral para que no se vea apretado */
+    .categoria-genero { padding: 40px 20px; }
+    .categoria-genero h2 { font-size: 1.8rem; }
+
+    /* Grilla de productos: de 4 columnas baja a 2 en celular */
+    .grilla-productos { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+
+    /* Detalle de un producto: la imagen y la info se apilan en vez de ir lado a lado */
+    .detalle-grid { grid-template-columns: 1fr; padding: 20px; }
+
+    /* Footer: las columnas de enlaces se apilan en una sola columna */
+    .footer-columnas { grid-template-columns: 1fr; gap: 25px; text-align: center; }
+    .footer-columna ul { align-items: center; }
+    .footer-inferior { flex-direction: column; text-align: center; }
+
+    /* Pagina de contacto: el formulario y la info de contacto se apilan */
+    .contenedor-contacto { flex-direction: column; }
+
+    /* Cualquier fila de campos de formulario (contacto, admin, auth) pasa a una columna */
+    .fila-formulario { flex-direction: column; gap: 0; }
+    .fila-formulario .campo-formulario { min-width: 0; }
+
+    /* Tarjeta de login/registro con menos padding en pantallas chicas */
+    .tarjeta-auth { padding: 25px; }
+
+    /* Panel de administrador: el menu lateral pasa de fijo a una barra horizontal arriba */
+    .panel-admin { flex-direction: column; min-height: auto; }
+    .sidebar-admin { width: 100%; border-right: none; border-bottom: 2px solid var(--color-borde); padding: 15px 0; }
+    .sidebar-admin .logo-tienda { padding: 0 20px 15px 20px; margin-bottom: 10px; }
+    .menu-sidebar { display: flex; overflow-x: auto; }
+    .menu-sidebar li a { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+    .menu-sidebar li a.enlace-activo { border-left-color: transparent; border-bottom-color: var(--color-acento); }
+    .sidebar-pie { border-top: none; padding: 10px 20px 0 20px; }
+    .contenido-admin { padding: 25px 20px; }
+
+    /* Cabecera del admin: titulo y boton se apilan */
+    .cabecera-admin { flex-direction: column; align-items: flex-start; }
+
+    /* Tabla del admin: se le permite scroll horizontal en vez de romper el diseno */
+    .tabla-admin { display: block; overflow-x: auto; white-space: nowrap; }
+
+    /* Accesos directos del panel: de varias columnas a una sola */
+    .accesos-admin { flex-direction: column; }
+    .accesos-admin a { min-width: 0; }
+
+}
