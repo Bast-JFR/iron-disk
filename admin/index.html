@@ -8,5 +8,64 @@
 </head>
 <body>
 
+    <!-- Panel de administrador: menu lateral fijo a la izquierda y contenido a la derecha -->
+    <div class="panel-admin">
+
+        <!-- Menu vertical del panel -->
+        <aside class="sidebar-admin">
+
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk Admin</span>
+            </a>
+
+            <nav>
+                <ul class="menu-sidebar">
+                    <li><a href="index.html" class="enlace-activo">Panel</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="usuarios.html">Usuarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-pie">
+                <a href="../index.html">← Ver tienda</a>
+            </div>
+
+        </aside>
+
+        <!-- Contenido principal del panel -->
+        <main class="contenido-admin">
+
+            <h1 class="saludo-admin">¡Hola, Administrador!</h1>
+            <p class="subtitulo-admin">Bienvenido al panel de Iron Disk. Desde aquí puedes gestionar el catálogo de productos y los usuarios del sistema.</p>
+
+            <!-- Resumen con numeros clave del panel -->
+            <section class="resumen-admin">
+                <div class="tarjeta-resumen">
+                    <div class="numero-resumen">22</div>
+                    <div class="etiqueta-resumen">Productos en catálogo</div>
+                </div>
+                <div class="tarjeta-resumen tarjeta-alerta">
+                    <div class="numero-resumen">3</div>
+                    <div class="etiqueta-resumen">Productos con stock crítico</div>
+                </div>
+                <div class="tarjeta-resumen">
+                    <div class="numero-resumen">2</div>
+                    <div class="etiqueta-resumen">Usuarios registrados</div>
+                </div>
+            </section>
+
+            <!-- Accesos directos a las tareas mas comunes del panel -->
+            <section class="accesos-admin">
+                <a href="producto-nuevo.html">Nuevo producto</a>
+                <a href="productos.html">Ver listado de productos</a>
+                <a href="usuario-nuevo.html">Nuevo usuario</a>
+                <a href="usuarios.html">Ver listado de usuarios</a>
+            </section>
+
+        </main>
+
+    </div>
+
 </body>
 </html>

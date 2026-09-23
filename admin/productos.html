@@ -3,10 +3,70 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Disk - Administrador - Productos</title>
+    <title>Iron Disk - Productos (Admin)</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+
+    <!-- Panel de administrador: menu lateral fijo a la izquierda y contenido a la derecha -->
+    <div class="panel-admin">
+
+        <!-- Menu vertical del panel -->
+        <aside class="sidebar-admin">
+
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk Admin</span>
+            </a>
+
+            <nav>
+                <ul class="menu-sidebar">
+                    <li><a href="index.html">Panel</a></li>
+                    <li><a href="productos.html" class="enlace-activo">Productos</a></li>
+                    <li><a href="usuarios.html">Usuarios</a></li>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-pie">
+                <a href="../index.html">← Ver tienda</a>
+            </div>
+
+        </aside>
+
+        <!-- Contenido principal del panel -->
+        <main class="contenido-admin">
+
+            <div class="cabecera-admin">
+                <h1>Productos</h1>
+                <a href="producto-nuevo.html" class="btn-primario">+ Nuevo producto</a>
+            </div>
+
+            <!-- La tabla se llena con JavaScript a partir del arreglo guardado en localStorage -->
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Artista</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-productos">
+                    <!-- Filas generadas por assets/js/admin-productos-listado.js -->
+                </tbody>
+            </table>
+
+        </main>
+
+    </div>
+
+    <script src="../assets/js/productos-admin.js"></script>
+    <script src="../assets/js/admin-productos-listado.js"></script>
 
 </body>
 </html>
