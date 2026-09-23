@@ -8,5 +8,63 @@
 </head>
 <body>
 
+    <!-- Panel de administrador: menu lateral fijo a la izquierda y contenido a la derecha -->
+    <div class="panel-admin">
+
+        <!-- Menu vertical del panel -->
+        <aside class="sidebar-admin">
+
+            <a href="index.html" class="logo-tienda">
+                <span class="icono-logo">💿</span>
+                <span>Iron Disk Admin</span>
+            </a>
+
+            <nav>
+                <ul class="menu-sidebar">
+                    <li><a href="index.html">Panel</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="usuarios.html" class="enlace-activo">Usuarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-pie">
+                <a href="../index.html">← Ver tienda</a>
+            </div>
+
+        </aside>
+
+        <!-- Contenido principal del panel -->
+        <main class="contenido-admin">
+
+            <div class="cabecera-admin">
+                <h1>Usuarios</h1>
+                <a href="usuario-nuevo.html" class="btn-primario">+ Nuevo usuario</a>
+            </div>
+
+            <!-- La tabla se llena con JavaScript a partir del arreglo guardado en localStorage -->
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>RUN</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Tipo de usuario</th>
+                        <th>Región</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-usuarios">
+                    <!-- Filas generadas por assets/js/admin-usuarios-listado.js -->
+                </tbody>
+            </table>
+
+        </main>
+
+    </div>
+
+    <script src="../assets/js/usuarios-admin.js"></script>
+    <script src="../assets/js/admin-usuarios-listado.js"></script>
+
 </body>
 </html>
