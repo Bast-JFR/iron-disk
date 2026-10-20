@@ -16,6 +16,8 @@ import Carrito from './pages/Carrito';
 import Checkout from './pages/Checkout';
 import CompraExitosa from './pages/CompraExitosa';
 import CompraError from './pages/CompraError';
+import Login from './pages/Login';
+import Registro from './pages/Registro';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -34,8 +36,8 @@ function App() {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/blogs/:id" element={<BlogDetalle />} />
               <Route path="/contacto" element={<Contacto />} />
-              <Route path="/login" element={<Pendiente titulo="Iniciar sesión" />} />
-              <Route path="/registro" element={<Pendiente titulo="Registro" />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
               <Route path="/carrito" element={<Carrito />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/compra-exitosa/:id" element={<CompraExitosa />} />
