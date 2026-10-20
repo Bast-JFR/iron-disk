@@ -18,6 +18,11 @@ import CompraExitosa from './pages/CompraExitosa';
 import CompraError from './pages/CompraError';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
+import AdminLayout from './components/AdminLayout';
+import Dashboard from './pages/admin/Dashboard';
+import AdminProductos from './pages/admin/AdminProductos';
+import ProductoForm from './pages/admin/ProductoForm';
+import ProductosCriticos from './pages/admin/ProductosCriticos';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -43,17 +48,19 @@ function App() {
               <Route path="/compra-exitosa/:id" element={<CompraExitosa />} />
               <Route path="/compra-error" element={<CompraError />} />
             </Route>
-            <Route path="/admin" element={<Pendiente titulo="Panel de administración" />} />
-            <Route path="/admin/productos" element={<Pendiente titulo="Productos (admin)" />} />
-            <Route path="/admin/productos/nuevo" element={<Pendiente titulo="Nuevo producto" />} />
-            <Route path="/admin/productos/editar/:codigo" element={<Pendiente titulo="Editar producto" />} />
-            <Route path="/admin/productos/criticos" element={<Pendiente titulo="Productos críticos" />} />
-            <Route path="/admin/usuarios" element={<Pendiente titulo="Usuarios (admin)" />} />
-            <Route path="/admin/usuarios/nuevo" element={<Pendiente titulo="Nuevo usuario" />} />
-            <Route path="/admin/usuarios/editar/:run" element={<Pendiente titulo="Editar usuario" />} />
-            <Route path="/admin/usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
-            <Route path="/admin/ordenes" element={<Pendiente titulo="Órdenes" />} />
-            <Route path="/admin/ordenes/:id" element={<Pendiente titulo="Boleta" />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="productos" element={<AdminProductos />} />
+              <Route path="productos/nuevo" element={<ProductoForm />} />
+              <Route path="productos/editar/:codigo" element={<ProductoForm />} />
+              <Route path="productos/criticos" element={<ProductosCriticos />} />
+              <Route path="usuarios" element={<Pendiente titulo="Usuarios (admin)" />} />
+              <Route path="usuarios/nuevo" element={<Pendiente titulo="Nuevo usuario" />} />
+              <Route path="usuarios/editar/:run" element={<Pendiente titulo="Editar usuario" />} />
+              <Route path="usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
+              <Route path="ordenes" element={<Pendiente titulo="Órdenes" />} />
+              <Route path="ordenes/:id" element={<Pendiente titulo="Boleta" />} />
+            </Route>
           </Routes>
         </HashRouter>
       </CarritoProvider>

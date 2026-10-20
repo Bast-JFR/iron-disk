@@ -66,3 +66,8 @@ a:hover { color: var(--iron-acento-hover); }
 /* Medidas de la imagen y la cantidad en el carrito */
 .carrito-imagen { width: 56px; height: 56px; object-fit: cover; }
 .carrito-cantidad { width: 80px; }
+
+/* En celular el menu del admin queda arriba y no ocupa toda la pantalla */
+@media (max-width: 767px) {
+  .sidebar-admin { min-height: auto; border-right: 0; border-bottom: 2px solid var(--iron-borde); }
+}
