@@ -29,7 +29,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-iron sticky-top">
       <div className="container">
         <Link className="navbar-brand text-white" to="/">
-          Iron Disk
+          <span className="me-2">💿</span>Iron Disk
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-label="Abrir menu">
           <span className="navbar-toggler-icon"></span>
@@ -65,16 +65,17 @@ function Navbar() {
               </>
             ) : (
               <>
-                <Link className="btn btn-sm btn-outline-secondary" to="/login">
+                <Link className="nav-link" to="/login">
                   Iniciar sesión
                 </Link>
-                <Link className="btn btn-sm btn-primary" to="/registro">
-                  Crear cuenta
+                <Link className="nav-link" to="/registro">
+                  Registrarse
                 </Link>
               </>
             )}
-            <Link className="btn btn-sm btn-success" to="/carrito">
-              Carrito <span className="badge text-bg-light">{unidades}</span>
+            <Link className="carrito-link" to="/carrito" aria-label="Ir al carrito">
+              <span className="icono-carrito">🛒</span>
+              <span className="contador-carrito">{unidades}</span>
             </Link>
           </div>
         </div>

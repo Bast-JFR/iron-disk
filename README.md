@@ -1,7 +1,10 @@
 # Iron Disk
 
-Tienda online de discos (vinilos, CDs y cassettes). Proyecto de la Evaluación Parcial 1 de
+Tienda online de discos (vinilos, CDs y cassettes). Proyecto de la Evaluación Parcial 1 y 2 de
 Desarrollo Full Stack II (DSY1104), Duoc UC.
+
+- Evaluación 1: sitio en HTML, CSS y JavaScript, en la raíz del repositorio.
+- Evaluación 2: la misma tienda hecha con React y Bootstrap, en la carpeta `iron-disk-react`.
 
 Proyecto frontend puro: HTML5, CSS3 y JavaScript vanilla. Sin backend ni base de datos; lo
 que necesite persistir (carrito de compras, productos y usuarios del administrador) se
@@ -15,6 +18,23 @@ No requiere instalación ni build. Alguna de estas dos formas:
 
 - Abrir `index.html` directamente en el navegador.
 - Usar la extensión Live Server de VS Code sobre la carpeta del proyecto.
+
+## Evaluación 2: React, Bootstrap y pruebas
+
+Desde la carpeta `iron-disk-react`:
+
+```
+npm install     instala las dependencias (solo la primera vez)
+npm start       abre la tienda en el navegador
+npm test        ejecuta las pruebas con Jasmine y Karma y genera la cobertura en coverage/
+npm run build   genera la versión para publicar
+```
+
+Para entrar al panel de administración: `ba.jofre@duoc.cl` con contraseña `admin123`.
+
+En el checkout, las tarjetas que parten con 0000 simulan un pago rechazado.
+
+La documentación de la entrega está en la carpeta `docs`: ERS versión 2 y documento de cobertura de testing.
 
 ## Estructura del proyecto
 
@@ -44,4 +64,17 @@ iron-disk/
 | `feature/admin-productos` | Bastián y Renato | Home del administrador y mantenedor de productos |
 | `feature/admin-usuarios` | Bastián y Renato | Mantenedor de usuarios |
 
-Todas las ramas están integradas en `main`.
+Ramas de la Evaluación 2, cada una sale de la anterior:
+
+| Rama | Contenido |
+|---|---|
+| `feature/react-base` | Proyecto React, Bootstrap y rutas |
+| `feature/react-config-pruebas` | Configuración de Jasmine y Karma |
+| `feature/react-datos` | Capa de datos con CRUD, validaciones, contextos de carrito y sesión |
+| `feature/react-tienda` | Home, catálogo, detalle, categorías, ofertas, nosotros, blogs y contacto |
+| `feature/react-compra` | Carrito, checkout, compra exitosa y con error, login y registro |
+| `feature/react-admin-productos` | Panel de administración y mantenedor de productos |
+| `feature/react-pruebas` | Pruebas unitarias y cobertura |
+| `feature/react-documentos` | ERS versión 2 y documento de cobertura |
+
+Las ramas de la Evaluación 1 están integradas en `main`.
