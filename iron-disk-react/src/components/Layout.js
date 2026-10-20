@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-// Estructura comun de la tienda publica: barra superior, contenido de la pagina y pie
+// Estructura comun de la tienda publica con barra superior, contenido y pie de pagina
 function Layout() {
   return (
     <div className="d-flex flex-column min-vh-100">

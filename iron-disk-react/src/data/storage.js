@@ -1,5 +1,4 @@
-// Acceso unico a localStorage. Todo el resto de la capa de datos pasa por aqui,
-// asi es facil simular (mock) el almacenamiento en las pruebas.
+// Todo el acceso a localStorage pasa por este archivo
 
 export function leer(clave, valorBase) {
   const guardado = localStorage.getItem(clave);

@@ -4,7 +4,7 @@ import { buscarUsuarioPorCorreo } from '../data/usuarios';
 
 export const CLAVE_SESION = 'iron-disk-react-sesion';
 
-// Revisa correo y contrasena contra los usuarios guardados. Funcion pura de datos, facil de probar.
+// Revisa el correo y la contrasena contra los usuarios guardados
 export function autenticar(correo, contrasena) {
   const usuario = buscarUsuarioPorCorreo(correo);
 
@@ -19,7 +19,7 @@ export function autenticar(correo, contrasena) {
 
 const AuthContext = createContext(null);
 
-// Sesion simulada: guarda el usuario que inicio sesion en localStorage
+// Sesion simulada, guarda en localStorage al usuario que inicio sesion
 export function AuthProvider({ children }) {
   const [usuario, setUsuario] = useState(() => leer(CLAVE_SESION, null));
 

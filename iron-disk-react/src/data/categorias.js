@@ -1,4 +1,4 @@
-// Categorias del catalogo, guardadas en localStorage igual que el resto de los datos.
+// Categorias del catalogo guardadas en localStorage
 import { leer, guardar } from './storage';
 
 export const CLAVE_CATEGORIAS = 'iron-disk-react-categorias';

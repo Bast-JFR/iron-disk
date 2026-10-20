@@ -1,5 +1,4 @@
-// Validaciones de formularios como funciones puras.
-// Cada una devuelve '' si el valor es valido, o el mensaje de error si no lo es.
+// Validaciones de los formularios, devuelven vacio si esta bien o el mensaje de error
 
 export const DOMINIOS_PERMITIDOS = ['duoc.cl', 'profesor.duoc.cl', 'gmail.com'];
 

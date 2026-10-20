@@ -1,4 +1,4 @@
-// Ordenes de compra generadas por el checkout, guardadas en localStorage.
+// Ordenes de compra que se generan en el checkout y se guardan en localStorage
 import { leer, guardar } from './storage';
 
 export const CLAVE_ORDENES = 'iron-disk-react-ordenes';
@@ -15,7 +15,7 @@ export function ordenesPorCorreo(correo) {
   return obtenerOrdenes().filter((o) => o.cliente.correo.toLowerCase() === correo.toLowerCase());
 }
 
-// Crea una orden nueva con numero correlativo y la guarda. Devuelve la orden creada.
+// Crea una orden nueva con numero correlativo, la guarda y la devuelve
 export function crearOrden({ cliente, direccion, items, total, estado = 'Pagada' }) {
   const ordenes = obtenerOrdenes();
   const orden = {
