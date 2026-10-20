@@ -12,6 +12,10 @@ import Nosotros from './pages/Nosotros';
 import Blogs from './pages/Blogs';
 import BlogDetalle from './pages/BlogDetalle';
 import Contacto from './pages/Contacto';
+import Carrito from './pages/Carrito';
+import Checkout from './pages/Checkout';
+import CompraExitosa from './pages/CompraExitosa';
+import CompraError from './pages/CompraError';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -32,10 +36,10 @@ function App() {
               <Route path="/contacto" element={<Contacto />} />
               <Route path="/login" element={<Pendiente titulo="Iniciar sesión" />} />
               <Route path="/registro" element={<Pendiente titulo="Registro" />} />
-              <Route path="/carrito" element={<Pendiente titulo="Carrito" />} />
-              <Route path="/checkout" element={<Pendiente titulo="Checkout" />} />
-              <Route path="/compra-exitosa/:id" element={<Pendiente titulo="Compra exitosa" />} />
-              <Route path="/compra-error" element={<Pendiente titulo="Pago con error" />} />
+              <Route path="/carrito" element={<Carrito />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/compra-exitosa/:id" element={<CompraExitosa />} />
+              <Route path="/compra-error" element={<CompraError />} />
             </Route>
             <Route path="/admin" element={<Pendiente titulo="Panel de administración" />} />
             <Route path="/admin/productos" element={<Pendiente titulo="Productos (admin)" />} />
