@@ -1,9 +1,9 @@
-// "Base de datos" de productos: un arreglo base + CRUD guardado en localStorage.
+// Productos de la tienda, un arreglo base con las operaciones sobre localStorage
 import { leer, guardar } from './storage';
 
 export const CLAVE_PRODUCTOS = 'iron-disk-react-productos';
 
-// ofertaPorcentaje: descuento aplicado al precio (0 = sin oferta)
+// ofertaPorcentaje es el descuento sobre el precio, si es cero no hay oferta
 export const PRODUCTOS_BASE = [
   { codigo: 'IM-001', nombre: 'The Number of the Beast', artista: 'Iron Maiden', formato: 'Vinilo', precio: 32990, stock: 12, stockCritico: 3, categoria: 'metal', imagen: 'img/maiden-beast.png', ofertaPorcentaje: 15, descripcion: 'Clásico de 1982 con Run to the Hills y Hallowed Be Thy Name.' },
   { codigo: 'IM-002', nombre: 'Powerslave', artista: 'Iron Maiden', formato: 'CD', precio: 16990, stock: 8, stockCritico: 3, categoria: 'metal', imagen: 'img/iron2.png', ofertaPorcentaje: 0, descripcion: 'Álbum de 1984 con Aces High y Rime of the Ancient Mariner.' },

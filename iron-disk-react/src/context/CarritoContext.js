@@ -3,7 +3,7 @@ import { leer, guardar } from '../data/storage';
 
 export const CLAVE_CARRITO = 'iron-disk-react-carrito';
 
-// Funciones puras: calculan el nuevo estado sin tocar nada fuera de ellas
+// Funciones que calculan el carrito nuevo sin modificar el anterior
 export function agregarItem(items, producto, cantidad = 1) {
   const existe = items.some((i) => i.codigo === producto.codigo);
 

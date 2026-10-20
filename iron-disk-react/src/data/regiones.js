@@ -1,5 +1,4 @@
-// Regiones de Chile con algunas de sus comunas, para los selectores dependientes.
-// No es el listado completo de las 346 comunas, pero cubre las principales de cada region.
+// Regiones de Chile con sus comunas principales para los selectores de region y comuna
 export const REGIONES_COMUNAS = [
   { region: 'Arica y Parinacota', comunas: ['Arica', 'Camarones', 'Putre', 'General Lagos'] },
   { region: 'Tarapacá', comunas: ['Iquique', 'Alto Hospicio', 'Pozo Almonte', 'Pica'] },

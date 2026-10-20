@@ -1,11 +1,11 @@
-// "Base de datos" de usuarios: arreglo base + CRUD guardado en localStorage.
+// Usuarios de la tienda, un arreglo base con las operaciones sobre localStorage
 import { leer, guardar } from './storage';
 
 export const CLAVE_USUARIOS = 'iron-disk-react-usuarios';
 
 export const TIPOS_USUARIO = ['Administrador', 'Vendedor', 'Cliente'];
 
-// Usuarios de ejemplo (los RUN tienen digito verificador valido)
+// Usuarios de ejemplo con RUN validos
 export const USUARIOS_BASE = [
   { run: '190110222', nombre: 'Bastián', apellidos: 'Jofré', correo: 'ba.jofre@duocuc.cl', contrasena: 'admin123', fechaNacimiento: '', tipoUsuario: 'Administrador', region: 'Metropolitana de Santiago', comuna: 'Providencia', direccion: 'Av. Providencia 2124, local 15' },
   { run: '181245875', nombre: 'Renato', apellidos: 'Colipe Lienan', correo: 're.colipe@duocuc.cl', contrasena: 'admin123', fechaNacimiento: '', tipoUsuario: 'Administrador', region: 'Metropolitana de Santiago', comuna: 'Santiago', direccion: 'Alameda 1234' },

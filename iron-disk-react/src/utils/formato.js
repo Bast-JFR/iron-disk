@@ -1,9 +1,9 @@
-// Formatea un numero como precio en pesos chilenos. Ej: 32990 -> $32.990
+// Da formato de pesos chilenos a un numero
 export function formatearPrecio(valor) {
   return '$' + Number(valor).toLocaleString('es-CL');
 }
 
-// Formatea una fecha ISO como dd-mm-aaaa hh:mm
+// Da formato de dia, mes, ano y hora a una fecha
 export function formatearFecha(iso) {
   const f = new Date(iso);
   const dos = (n) => String(n).padStart(2, '0');

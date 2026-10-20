@@ -1,5 +1,4 @@
-// Configuracion de Karma + Jasmine para probar los componentes de React.
-// Base: ejemplo entregado en clases, mas el reporte de cobertura de codigo.
+// Configuracion de Karma y Jasmine para probar los componentes
 module.exports = function (config) {
   config.set({
     frameworks: ['jasmine', 'webpack'],
@@ -22,7 +21,7 @@ module.exports = function (config) {
                   '@babel/preset-env',
                   ['@babel/preset-react', { runtime: 'automatic' }],
                 ],
-                // Marca el codigo propio (no las pruebas) para medir la cobertura
+                // Mide la cobertura solo del codigo propio, no de las pruebas
                 plugins: [['istanbul', { exclude: ['**/*.spec.js'] }]],
               },
             },

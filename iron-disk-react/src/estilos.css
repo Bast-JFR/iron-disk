@@ -56,3 +56,9 @@ a:hover { color: var(--iron-acento-hover); }
 .sidebar-admin .nav-link.active { color: var(--iron-acento); background-color: var(--iron-tarjeta); border-left-color: var(--iron-acento); }
 
 .stock-critico { color: #e0b96a; font-weight: 700; }
+
+/* Imagen grande de cabecera en el detalle de un blog */
+.blog-cabecera { width: 100%; max-height: 380px; object-fit: cover; }
+
+/* Imagen de las tarjetas de categoria y de blog */
+.card-imagen { height: 200px; object-fit: cover; }
