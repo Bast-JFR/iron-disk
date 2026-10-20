@@ -17,6 +17,10 @@ export function quitarItem(items, codigo) {
   return items.filter((i) => i.codigo !== codigo);
 }
 
+export function cambiarCantidadItem(items, codigo, cantidad) {
+  return items.map((i) => (i.codigo === codigo ? { ...i, cantidad } : i));
+}
+
 export function calcularTotal(items) {
   return items.reduce((suma, i) => suma + i.precio * i.cantidad, 0);
 }
@@ -41,6 +45,7 @@ export function CarritoProvider({ children }) {
     unidades: contarUnidades(items),
     agregar: (producto, cantidad) => setItems((actual) => agregarItem(actual, producto, cantidad)),
     quitar: (codigo) => setItems((actual) => quitarItem(actual, codigo)),
+    cambiarCantidad: (codigo, cantidad) => setItems((actual) => cambiarCantidadItem(actual, codigo, cantidad)),
     vaciar: () => setItems([]),
   };
 

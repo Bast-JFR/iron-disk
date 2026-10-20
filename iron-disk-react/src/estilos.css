@@ -62,3 +62,7 @@ a:hover { color: var(--iron-acento-hover); }
 
 /* Imagen de las tarjetas de categoria y de blog */
 .card-imagen { height: 200px; object-fit: cover; }
+
+/* Medidas de la imagen y la cantidad en el carrito */
+.carrito-imagen { width: 56px; height: 56px; object-fit: cover; }
+.carrito-cantidad { width: 80px; }

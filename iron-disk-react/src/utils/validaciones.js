@@ -151,3 +151,16 @@ export function validarStockCritico(valor) {
   }
   return '';
 }
+
+// Tarjeta requerida, 16 digitos sin espacios
+export function validarTarjeta(valor) {
+  const tarjeta = (valor || '').trim();
+
+  if (tarjeta === '') {
+    return 'Ingresa el número de tarjeta.';
+  }
+  if (!/^\d{16}$/.test(tarjeta)) {
+    return 'La tarjeta debe tener 16 dígitos, sin espacios.';
+  }
+  return '';
+}
