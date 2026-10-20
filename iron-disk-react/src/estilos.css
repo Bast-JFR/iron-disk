@@ -1,0 +1,58 @@
+/* Identidad visual de Iron Disk sobre Bootstrap: fondo oscuro y acento naranja */
+:root {
+  --iron-fondo: #111111;
+  --iron-panel: #1a1a1a;
+  --iron-tarjeta: #222222;
+  --iron-borde: #333333;
+  --iron-acento: #ff6600;
+  --iron-acento-hover: #cc5200;
+}
+
+body {
+  background-color: var(--iron-fondo);
+  min-height: 100vh;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--iron-acento);
+  --bs-btn-border-color: var(--iron-acento);
+  --bs-btn-hover-bg: var(--iron-acento-hover);
+  --bs-btn-hover-border-color: var(--iron-acento-hover);
+  --bs-btn-active-bg: var(--iron-acento-hover);
+  --bs-btn-active-border-color: var(--iron-acento-hover);
+  --bs-btn-disabled-bg: var(--iron-acento);
+  --bs-btn-disabled-border-color: var(--iron-acento);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--iron-acento);
+  --bs-btn-border-color: var(--iron-acento);
+  --bs-btn-hover-bg: var(--iron-acento);
+  --bs-btn-hover-border-color: var(--iron-acento);
+  --bs-btn-active-bg: var(--iron-acento-hover);
+}
+
+a { color: var(--iron-acento); }
+a:hover { color: var(--iron-acento-hover); }
+
+.navbar-iron { background-color: var(--iron-panel); border-bottom: 2px solid var(--iron-acento); }
+.navbar-iron .navbar-brand { text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.navbar-iron .nav-link { text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.navbar-iron .nav-link.active, .navbar-iron .nav-link:hover { color: var(--iron-acento); }
+
+.footer-iron { background-color: var(--iron-panel); border-top: 1px solid var(--iron-borde); }
+.footer-iron a { text-decoration: none; }
+
+.titulo-seccion { text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+
+.card-iron { background-color: var(--iron-tarjeta); border: 1px solid var(--iron-borde); }
+.card-producto img { aspect-ratio: 1 / 1; object-fit: cover; }
+
+.sidebar-admin { background-color: var(--iron-panel); border-right: 2px solid var(--iron-borde); min-height: 100vh; }
+.sidebar-admin .nav-link { color: var(--bs-secondary-color); border-left: 3px solid transparent; }
+.sidebar-admin .nav-link.active { color: var(--iron-acento); background-color: var(--iron-tarjeta); border-left-color: var(--iron-acento); }
+
+.stock-critico { color: #e0b96a; font-weight: 700; }
