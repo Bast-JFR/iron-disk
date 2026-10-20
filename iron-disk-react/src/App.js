@@ -6,6 +6,12 @@ import Pendiente from './pages/Pendiente';
 import Home from './pages/Home';
 import Productos from './pages/Productos';
 import DetalleProducto from './pages/DetalleProducto';
+import Categorias from './pages/Categorias';
+import Ofertas from './pages/Ofertas';
+import Nosotros from './pages/Nosotros';
+import Blogs from './pages/Blogs';
+import BlogDetalle from './pages/BlogDetalle';
+import Contacto from './pages/Contacto';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -18,12 +24,12 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/productos" element={<Productos />} />
               <Route path="/productos/:codigo" element={<DetalleProducto />} />
-              <Route path="/categorias" element={<Pendiente titulo="Categorías" />} />
-              <Route path="/ofertas" element={<Pendiente titulo="Ofertas" />} />
-              <Route path="/nosotros" element={<Pendiente titulo="Nosotros" />} />
-              <Route path="/blogs" element={<Pendiente titulo="Blogs" />} />
-              <Route path="/blogs/:id" element={<Pendiente titulo="Detalle de blog" />} />
-              <Route path="/contacto" element={<Pendiente titulo="Contacto" />} />
+              <Route path="/categorias" element={<Categorias />} />
+              <Route path="/ofertas" element={<Ofertas />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:id" element={<BlogDetalle />} />
+              <Route path="/contacto" element={<Contacto />} />
               <Route path="/login" element={<Pendiente titulo="Iniciar sesión" />} />
               <Route path="/registro" element={<Pendiente titulo="Registro" />} />
               <Route path="/carrito" element={<Pendiente titulo="Carrito" />} />
