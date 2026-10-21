@@ -27,6 +27,7 @@ import Boleta from './pages/admin/Boleta';
 import AdminUsuarios from './pages/admin/AdminUsuarios';
 import UsuarioForm from './pages/admin/UsuarioForm';
 import HistorialCompras from './pages/admin/HistorialCompras';
+import Reportes from './pages/admin/Reportes';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -64,6 +65,7 @@ function App() {
               <Route path="usuarios/:run/compras" element={<HistorialCompras />} />
               <Route path="ordenes" element={<AdminOrdenes />} />
               <Route path="ordenes/:id" element={<Boleta />} />
+              <Route path="reportes" element={<Reportes />} />
             </Route>
           </Routes>
         </HashRouter>
