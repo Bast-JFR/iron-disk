@@ -25,6 +25,7 @@ import ProductoForm from './pages/admin/ProductoForm';
 import ProductosCriticos from './pages/admin/ProductosCriticos';
 import AdminUsuarios from './pages/admin/AdminUsuarios';
 import UsuarioForm from './pages/admin/UsuarioForm';
+import HistorialCompras from './pages/admin/HistorialCompras';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -59,7 +60,7 @@ function App() {
               <Route path="usuarios" element={<AdminUsuarios />} />
               <Route path="usuarios/nuevo" element={<UsuarioForm />} />
               <Route path="usuarios/editar/:run" element={<UsuarioForm />} />
-              <Route path="usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
+              <Route path="usuarios/:run/compras" element={<HistorialCompras />} />
               <Route path="ordenes" element={<Pendiente titulo="Órdenes" />} />
               <Route path="ordenes/:id" element={<Pendiente titulo="Boleta" />} />
             </Route>
