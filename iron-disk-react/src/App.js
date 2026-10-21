@@ -23,6 +23,8 @@ import Dashboard from './pages/admin/Dashboard';
 import AdminProductos from './pages/admin/AdminProductos';
 import ProductoForm from './pages/admin/ProductoForm';
 import ProductosCriticos from './pages/admin/ProductosCriticos';
+import AdminOrdenes from './pages/admin/AdminOrdenes';
+import Boleta from './pages/admin/Boleta';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -58,8 +60,8 @@ function App() {
               <Route path="usuarios/nuevo" element={<Pendiente titulo="Nuevo usuario" />} />
               <Route path="usuarios/editar/:run" element={<Pendiente titulo="Editar usuario" />} />
               <Route path="usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
-              <Route path="ordenes" element={<Pendiente titulo="Órdenes" />} />
-              <Route path="ordenes/:id" element={<Pendiente titulo="Boleta" />} />
+              <Route path="ordenes" element={<AdminOrdenes />} />
+              <Route path="ordenes/:id" element={<Boleta />} />
             </Route>
           </Routes>
         </HashRouter>
