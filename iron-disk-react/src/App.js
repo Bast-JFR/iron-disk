@@ -23,6 +23,7 @@ import Dashboard from './pages/admin/Dashboard';
 import AdminProductos from './pages/admin/AdminProductos';
 import ProductoForm from './pages/admin/ProductoForm';
 import ProductosCriticos from './pages/admin/ProductosCriticos';
+import AdminUsuarios from './pages/admin/AdminUsuarios';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -54,7 +55,7 @@ function App() {
               <Route path="productos/nuevo" element={<ProductoForm />} />
               <Route path="productos/editar/:codigo" element={<ProductoForm />} />
               <Route path="productos/criticos" element={<ProductosCriticos />} />
-              <Route path="usuarios" element={<Pendiente titulo="Usuarios (admin)" />} />
+              <Route path="usuarios" element={<AdminUsuarios />} />
               <Route path="usuarios/nuevo" element={<Pendiente titulo="Nuevo usuario" />} />
               <Route path="usuarios/editar/:run" element={<Pendiente titulo="Editar usuario" />} />
               <Route path="usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
