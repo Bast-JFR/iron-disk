@@ -1,4 +1,4 @@
-# Requisitos de validación — Iron Disk
+# Requisitos de validación de Iron Disk
 
 Reglas de negocio y validaciones exigidas por el Anexo 1 (Instrucciones) de la Evaluación
 Parcial 1, DSY1104. Estos son los valores exactos a implementar en JavaScript para cada

@@ -23,7 +23,7 @@ function HistorialCompras() {
     <>
       <h1 className="titulo-seccion mb-1">Historial de compras</h1>
       <p className="text-secondary mb-4">
-        {usuario.nombre} {usuario.apellidos} — {usuario.correo}
+        {usuario.nombre} {usuario.apellidos} - {usuario.correo}
       </p>
 
       {ordenes.length === 0 ? (
