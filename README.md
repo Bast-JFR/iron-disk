@@ -6,9 +6,8 @@ Desarrollo Full Stack II (DSY1104), Duoc UC.
 - Evaluación 1: sitio en HTML, CSS y JavaScript, en la raíz del repositorio.
 - Evaluación 2: la misma tienda hecha con React y Bootstrap, en la carpeta `iron-disk-react`.
 
-Proyecto frontend puro: HTML5, CSS3 y JavaScript vanilla. Sin backend ni base de datos; lo
-que necesite persistir (carrito de compras, productos y usuarios del administrador) se
-guarda en `localStorage`.
+Proyecto frontend puro, sin backend ni base de datos; lo que necesite persistir (carrito de
+compras, productos, usuarios y órdenes) se guarda en `localStorage`.
 
 Diseño responsivo: el sitio se adapta a celulares y tablets.
 
@@ -40,7 +39,15 @@ La documentación de la entrega está en la carpeta `docs`: ERS versión 2 y doc
 
 ```
 iron-disk/
+├── iron-disk-react/        Evaluación 2: la tienda en React, Bootstrap y pruebas
+│   ├── src/components/     componentes reutilizables (Boton, FormField, tablas...)
+│   ├── src/pages/          vistas de la tienda y del administrador (pages/admin)
+│   ├── src/data/           capa de datos con CRUD sobre localStorage
+│   ├── src/utils/          validaciones, filtros, formato, pago y reportes
+│   └── karma.conf.js       configuración de Jasmine y Karma
 ├── docs/
+│   ├── ERS-IronDisk-V2.docx              especificación de requisitos, versión 2
+│   ├── Cobertura-Testing-IronDisk.docx   documento de cobertura de testing
 │   └── requisitos.md      reglas de validación de los formularios
 ├── assets/
 │   ├── css/style.css      hoja de estilos externa (incluye el diseño responsivo)
@@ -64,7 +71,7 @@ iron-disk/
 | `feature/admin-productos` | Bastián y Renato | Home del administrador y mantenedor de productos |
 | `feature/admin-usuarios` | Bastián y Renato | Mantenedor de usuarios |
 
-Ramas de la Evaluación 2, cada una sale de la anterior:
+Ramas de la Evaluación 2:
 
 | Rama | Contenido |
 |---|---|
@@ -76,5 +83,9 @@ Ramas de la Evaluación 2, cada una sale de la anterior:
 | `feature/react-admin-productos` | Panel de administración y mantenedor de productos |
 | `feature/react-pruebas` | Pruebas unitarias y cobertura |
 | `feature/react-documentos` | ERS versión 2 y documento de cobertura |
+| `feature/react-admin-usuarios` | Mantenedor de usuarios e historial de compras |
+| `feature/react-ordenes` | Órdenes con su boleta, pruebas y cobertura actualizada |
+| `feature/react-reportes-perfil` | Reportes y perfil del administrador |
+| `feature/react-cierre` | Ajuste de pruebas, README, ERS y documento de cobertura |
 
-Las ramas de la Evaluación 1 están integradas en `main`.
+Las ramas de la Evaluación 1 y de la Evaluación 2 están integradas en `main`.
