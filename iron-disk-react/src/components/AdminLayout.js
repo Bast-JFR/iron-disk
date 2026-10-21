@@ -8,6 +8,7 @@ const ENLACES = [
   { ruta: '/admin/usuarios', texto: 'Usuarios', exacto: false },
   { ruta: '/admin/ordenes', texto: 'Órdenes', exacto: false },
   { ruta: '/admin/reportes', texto: 'Reportes', exacto: false },
+  { ruta: '/admin/perfil', texto: 'Perfil', exacto: false },
 ];
 
 // Estructura del panel admin con menu lateral, solo entra un administrador

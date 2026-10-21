@@ -28,6 +28,7 @@ import AdminUsuarios from './pages/admin/AdminUsuarios';
 import UsuarioForm from './pages/admin/UsuarioForm';
 import HistorialCompras from './pages/admin/HistorialCompras';
 import Reportes from './pages/admin/Reportes';
+import Perfil from './pages/admin/Perfil';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -66,6 +67,7 @@ function App() {
               <Route path="ordenes" element={<AdminOrdenes />} />
               <Route path="ordenes/:id" element={<Boleta />} />
               <Route path="reportes" element={<Reportes />} />
+              <Route path="perfil" element={<Perfil />} />
             </Route>
           </Routes>
         </HashRouter>
