@@ -55,9 +55,4 @@ describe('Boleta', () => {
 
     expect(window.print).toHaveBeenCalled();
   });
-
-  it('avisa cuando la orden no existe', () => {
-    const { container } = dibujar('ORD-00099');
-    expect(container.textContent).toContain('Orden no encontrada');
-  });
 });

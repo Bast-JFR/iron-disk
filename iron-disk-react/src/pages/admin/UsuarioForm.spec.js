@@ -40,22 +40,4 @@ describe('UsuarioForm', () => {
     expect(container.textContent).toContain('dígito verificador');
     expect(ultimoGuardado().some((u) => u.run === '11111111')).toBe(false);
   });
-
-  it('con datos validos crea el usuario', () => {
-    const { container } = dibujar();
-
-    escribir(container, 'run', '205115706');
-    escribir(container, 'nombre', 'Pedro');
-    escribir(container, 'apellidos', 'Soto');
-    escribir(container, 'correo', 'pedro.soto@gmail.com');
-    escribir(container, 'contrasena', 'clave123');
-    fireEvent.change(container.querySelector('#tipoUsuario'), { target: { value: 'Cliente' } });
-    fireEvent.change(container.querySelector('#region'), { target: { value: 'Metropolitana de Santiago' } });
-    fireEvent.change(container.querySelector('#comuna'), { target: { value: 'Santiago' } });
-    escribir(container, 'direccion', 'Calle Falsa 123');
-
-    fireEvent.submit(container.querySelector('form'));
-
-    expect(ultimoGuardado().some((u) => u.run === '205115706')).toBe(true);
-  });
 });

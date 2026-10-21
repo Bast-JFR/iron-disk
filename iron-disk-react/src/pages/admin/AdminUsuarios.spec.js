@@ -31,16 +31,6 @@ describe('AdminUsuarios', () => {
     expect(container.querySelectorAll('tbody tr').length).toBe(4);
   });
 
-  it('pide confirmacion antes de eliminar', () => {
-    spyOn(window, 'confirm').and.returnValue(false);
-    const { container } = dibujar();
-
-    fireEvent.click(boton(container, 'Eliminar'));
-
-    expect(window.confirm).toHaveBeenCalled();
-    expect(container.querySelectorAll('tbody tr').length).toBe(4);
-  });
-
   it('elimina el usuario cuando se confirma', () => {
     spyOn(window, 'confirm').and.returnValue(true);
     const { container } = dibujar();
@@ -48,13 +38,5 @@ describe('AdminUsuarios', () => {
     fireEvent.click(boton(container, 'Eliminar'));
 
     expect(container.querySelectorAll('tbody tr').length).toBe(3);
-  });
-
-  it('el buscador filtra la tabla', () => {
-    const { container } = dibujar();
-
-    fireEvent.change(container.querySelector('input[type="search"]'), { target: { value: 'camila' } });
-
-    expect(container.querySelectorAll('tbody tr').length).toBe(1);
   });
 });

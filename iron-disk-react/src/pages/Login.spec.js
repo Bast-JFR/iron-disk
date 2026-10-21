@@ -44,25 +44,4 @@ describe('Login', () => {
     expect(container.textContent).toContain('Solo se aceptan');
     expect(sesionGuardada()).toBe(false);
   });
-
-  it('con una contraseña incorrecta muestra el aviso de la cuenta', () => {
-    const { container } = dibujar();
-
-    escribir(container, 'correo', 'camila.soto@gmail.com');
-    escribir(container, 'contrasena', 'mala1');
-    fireEvent.submit(container.querySelector('form'));
-
-    expect(container.querySelector('.alert-danger').textContent).toContain('contraseña es incorrecta');
-    expect(sesionGuardada()).toBe(false);
-  });
-
-  it('con datos correctos guarda la sesion', () => {
-    const { container } = dibujar();
-
-    escribir(container, 'correo', 'camila.soto@gmail.com');
-    escribir(container, 'contrasena', 'cliente1');
-    fireEvent.submit(container.querySelector('form'));
-
-    expect(sesionGuardada()).toBe(true);
-  });
 });

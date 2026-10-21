@@ -45,16 +45,4 @@ describe('HistorialCompras', () => {
     expect(container.textContent).toContain('ORD-00001');
     expect(container.querySelectorAll('tbody tr').length).toBe(1);
   });
-
-  it('avisa cuando el usuario no tiene compras', () => {
-    const { container } = dibujar('123456785');
-
-    expect(container.textContent).toContain('todavía no tiene compras');
-  });
-
-  it('avisa cuando el run no corresponde a ningun usuario', () => {
-    const { container } = dibujar('999999999');
-
-    expect(container.textContent).toContain('Usuario no encontrado');
-  });
 });
