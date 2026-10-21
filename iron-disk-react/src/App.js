@@ -2,7 +2,6 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CarritoProvider } from './context/CarritoContext';
 import Layout from './components/Layout';
-import Pendiente from './pages/Pendiente';
 import Home from './pages/Home';
 import Productos from './pages/Productos';
 import DetalleProducto from './pages/DetalleProducto';
@@ -23,6 +22,11 @@ import Dashboard from './pages/admin/Dashboard';
 import AdminProductos from './pages/admin/AdminProductos';
 import ProductoForm from './pages/admin/ProductoForm';
 import ProductosCriticos from './pages/admin/ProductosCriticos';
+import AdminOrdenes from './pages/admin/AdminOrdenes';
+import Boleta from './pages/admin/Boleta';
+import AdminUsuarios from './pages/admin/AdminUsuarios';
+import UsuarioForm from './pages/admin/UsuarioForm';
+import HistorialCompras from './pages/admin/HistorialCompras';
 
 // Todas las rutas del sitio, cada vista se va reemplazando por su pagina real
 function App() {
@@ -54,12 +58,12 @@ function App() {
               <Route path="productos/nuevo" element={<ProductoForm />} />
               <Route path="productos/editar/:codigo" element={<ProductoForm />} />
               <Route path="productos/criticos" element={<ProductosCriticos />} />
-              <Route path="usuarios" element={<Pendiente titulo="Usuarios (admin)" />} />
-              <Route path="usuarios/nuevo" element={<Pendiente titulo="Nuevo usuario" />} />
-              <Route path="usuarios/editar/:run" element={<Pendiente titulo="Editar usuario" />} />
-              <Route path="usuarios/:run/compras" element={<Pendiente titulo="Historial de compras" />} />
-              <Route path="ordenes" element={<Pendiente titulo="Órdenes" />} />
-              <Route path="ordenes/:id" element={<Pendiente titulo="Boleta" />} />
+              <Route path="usuarios" element={<AdminUsuarios />} />
+              <Route path="usuarios/nuevo" element={<UsuarioForm />} />
+              <Route path="usuarios/editar/:run" element={<UsuarioForm />} />
+              <Route path="usuarios/:run/compras" element={<HistorialCompras />} />
+              <Route path="ordenes" element={<AdminOrdenes />} />
+              <Route path="ordenes/:id" element={<Boleta />} />
             </Route>
           </Routes>
         </HashRouter>
