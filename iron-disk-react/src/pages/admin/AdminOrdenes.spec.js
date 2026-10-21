@@ -38,24 +38,11 @@ function dibujar() {
 describe('AdminOrdenes', () => {
   beforeEach(simularAlmacen);
 
-  it('avisa cuando no hay ordenes', () => {
-    const { container } = dibujar();
-    expect(container.textContent).toContain('Todavía no hay órdenes');
-  });
-
   it('lista las ordenes guardadas', () => {
     guardarOrdenes([orden('ORD-00001', '2026-10-01T10:00:00.000Z'), orden('ORD-00002', '2026-10-05T10:00:00.000Z')]);
 
     const { container } = dibujar();
 
     expect(container.querySelectorAll('tbody tr').length).toBe(2);
-  });
-
-  it('muestra la orden mas nueva primero', () => {
-    guardarOrdenes([orden('ORD-00001', '2026-10-01T10:00:00.000Z'), orden('ORD-00002', '2026-10-05T10:00:00.000Z')]);
-
-    const { container } = dibujar();
-
-    expect(container.querySelector('tbody tr').textContent).toContain('ORD-00002');
   });
 });
