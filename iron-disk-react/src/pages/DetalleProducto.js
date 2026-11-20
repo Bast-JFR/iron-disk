@@ -3,31 +3,47 @@ import { Link, useParams } from 'react-router-dom';
 import Boton from '../components/Boton';
 import ProductGrid from '../components/ProductGrid';
 import Aviso from '../components/Aviso';
+import Cargando from '../components/Cargando';
 import useAgregarAlCarrito from '../hooks/useAgregarAlCarrito';
-import { buscarProductoPorCodigo, obtenerProductos, precioFinal } from '../data/productos';
+import useCarga from '../hooks/useCarga';
+import { productoService } from '../services/productoService';
+import { precioFinal } from '../data/productos';
 import { formatearPrecio } from '../utils/formato';
 
-// Detalle de un disco, el codigo viene en la direccion de la pagina
+// Detalle de un disco, el id viene en la direccion de la pagina
 function DetalleProducto() {
-  const { codigo } = useParams();
-  const producto = buscarProductoPorCodigo(codigo);
+  const { id } = useParams();
   const [cantidad, setCantidad] = useState(1);
   const { aviso, agregarProducto } = useAgregarAlCarrito();
 
-  if (!producto) {
+  // Pide el disco y despues los de su misma categoria para mostrarlos como relacionados
+  const { datos, cargando, error } = useCarga(async () => {
+    const encontrado = await productoService.obtener(id);
+    const mismaCategoria = await productoService.listar({ categoriaId: encontrado.categoriaId });
+    return { producto: encontrado, relacionados: mismaCategoria.filter((p) => p.id !== encontrado.id).slice(0, 4) };
+  }, [id]);
+
+  if (cargando) {
+    return (
+      <div className="container py-5">
+        <Cargando texto="Cargando disco..." />
+      </div>
+    );
+  }
+
+  if (error || !datos) {
     return (
       <div className="container py-5">
         <h1 className="titulo-seccion">Producto no encontrado</h1>
+        <p className="text-secondary">{error}</p>
         <Link to="/productos">Volver al catálogo</Link>
       </div>
     );
   }
 
+  const { producto, relacionados } = datos;
   const enOferta = producto.ofertaPorcentaje > 0;
   const quedaPoco = producto.stock > 0 && producto.stock <= producto.stockCritico;
-  const relacionados = obtenerProductos()
-    .filter((p) => p.categoria === producto.categoria && p.codigo !== producto.codigo)
-    .slice(0, 4);
 
   return (
     <div className="container py-5">
@@ -50,7 +66,7 @@ function DetalleProducto() {
           <img src={producto.imagen} className="img-fluid rounded-4 border" alt={`${producto.nombre} de ${producto.artista}`} />
         </div>
         <div className="col-md-6">
-          <span className="badge text-bg-secondary text-uppercase mb-2">{producto.categoria}</span>
+          <span className="badge text-bg-secondary text-uppercase mb-2">{producto.categoriaNombre}</span>
           <h1 className="titulo-seccion">{producto.nombre}</h1>
           <p className="fs-5 text-secondary">
             {producto.artista} · {producto.formato}

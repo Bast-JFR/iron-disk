@@ -2,20 +2,31 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TablaProductos from '../../components/TablaProductos';
 import Buscador from '../../components/Buscador';
-import { obtenerProductos, eliminarProducto } from '../../data/productos';
+import Cargando from '../../components/Cargando';
+import MensajeError from '../../components/MensajeError';
+import useCarga from '../../hooks/useCarga';
+import { productoService } from '../../services/productoService';
+import { mensajeDeError } from '../../services/api';
 import { filtrarProductos } from '../../utils/filtros';
 
 // Listado de productos con busqueda, ademas permite crear, editar y eliminar
 function AdminProductos() {
-  const [productos, setProductos] = useState(() => obtenerProductos());
+  const { datos, cargando, error, recargar } = useCarga(() => productoService.listar(), []);
   const [texto, setTexto] = useState('');
+  const [errorEliminar, setErrorEliminar] = useState('');
 
-  const eliminar = (producto) => {
+  const eliminar = async (producto) => {
     if (!window.confirm(`¿Eliminar ${producto.nombre}?`)) {
       return;
     }
-    eliminarProducto(producto.codigo);
-    setProductos(obtenerProductos());
+    setErrorEliminar('');
+    try {
+      await productoService.eliminar(producto.id);
+      recargar();
+    } catch (e) {
+      // El backend no deja eliminar un producto que ya se vendio
+      setErrorEliminar(mensajeDeError(e, 'No se pudo eliminar el producto.'));
+    }
   };
 
   return (
@@ -29,7 +40,8 @@ function AdminProductos() {
       <div className="mb-3 col-md-6">
         <Buscador valor={texto} onCambio={setTexto} />
       </div>
-      <TablaProductos productos={filtrarProductos(productos, { texto })} onEliminar={eliminar} />
+      <MensajeError mensaje={error || errorEliminar} onReintentar={error ? recargar : undefined} />
+      {cargando ? <Cargando texto="Cargando productos..." /> : !error && <TablaProductos productos={filtrarProductos(datos || [], { texto })} onEliminar={eliminar} />}
     </>
   );
 }

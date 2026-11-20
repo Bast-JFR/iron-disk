@@ -3,9 +3,12 @@ import { useSearchParams } from 'react-router-dom';
 import Buscador from '../components/Buscador';
 import ProductGrid from '../components/ProductGrid';
 import Aviso from '../components/Aviso';
+import Cargando from '../components/Cargando';
+import MensajeError from '../components/MensajeError';
 import useAgregarAlCarrito from '../hooks/useAgregarAlCarrito';
-import { obtenerProductos } from '../data/productos';
-import { obtenerCategorias } from '../data/categorias';
+import useCarga from '../hooks/useCarga';
+import { productoService } from '../services/productoService';
+import { categoriaService } from '../services/categoriaService';
 import { filtrarProductos } from '../utils/filtros';
 
 const FORMATOS = ['Vinilo', 'CD', 'Cassette'];
@@ -18,8 +21,9 @@ function Productos() {
   const [formato, setFormato] = useState('');
   const { aviso, agregarProducto } = useAgregarAlCarrito();
 
-  const todos = obtenerProductos();
-  const categorias = obtenerCategorias();
+  // Pide los productos y las categorias al mismo tiempo, los filtros se aplican en el navegador
+  const { datos, cargando, error, recargar } = useCarga(() => Promise.all([productoService.listar(), categoriaService.listar()]), []);
+  const [todos, categorias] = datos || [[], []];
   const visibles = filtrarProductos(todos, { texto, categoria, formato });
 
   return (
@@ -52,8 +56,17 @@ function Productos() {
         </div>
       </div>
 
-      <p className="text-secondary small">{visibles.length} productos</p>
-      <ProductGrid productos={visibles} onAgregar={agregarProducto} />
+      <MensajeError mensaje={error} onReintentar={recargar} />
+      {cargando ? (
+        <Cargando texto="Cargando discos..." />
+      ) : (
+        !error && (
+          <>
+            <p className="text-secondary small">{visibles.length} productos</p>
+            <ProductGrid productos={visibles} onAgregar={agregarProducto} />
+          </>
+        )
+      )}
       <Aviso mensaje={aviso} />
     </div>
   );

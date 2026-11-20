@@ -1,5 +1,6 @@
 import { Navigate, NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Cargando from './Cargando';
 
 const ENLACES = [
   { ruta: '/admin', texto: 'Dashboard', exacto: true },
@@ -13,7 +14,12 @@ const ENLACES = [
 
 // Estructura del panel admin con menu lateral, solo entra un administrador
 function AdminLayout() {
-  const { usuario, esAdmin, cerrarSesion } = useAuth();
+  const { usuario, esAdmin, cerrarSesion, verificando } = useAuth();
+
+  // Al recargar la pagina se espera a validar la sesion antes de decidir si se redirige al login
+  if (verificando) {
+    return <Cargando texto="Verificando sesión..." />;
+  }
 
   if (!usuario || !esAdmin) {
     return <Navigate to="/login" replace />;

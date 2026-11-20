@@ -10,11 +10,13 @@ function useAgregarAlCarrito() {
   const agregarProducto = (producto, cantidad = 1) => {
     agregar(
       {
+        id: producto.id,
         codigo: producto.codigo,
         nombre: producto.nombre,
         artista: producto.artista,
         imagen: producto.imagen,
         precio: precioFinal(producto),
+        stock: producto.stock,
       },
       cantidad
     );

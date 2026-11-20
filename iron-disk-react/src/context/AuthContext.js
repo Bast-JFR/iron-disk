@@ -1,56 +1,85 @@
-import { createContext, useContext, useState } from 'react';
-import { leer, guardar, eliminar } from '../data/storage';
-import { buscarUsuarioPorCorreo } from '../data/usuarios';
-
-export const CLAVE_SESION = 'iron-disk-react-sesion';
-
-// Revisa el correo y la contrasena contra los usuarios guardados
-export function autenticar(correo, contrasena) {
-  const usuario = buscarUsuarioPorCorreo(correo);
-
-  if (!usuario) {
-    return { ok: false, error: 'No existe una cuenta con ese correo.' };
-  }
-  if (usuario.contrasena !== contrasena) {
-    return { ok: false, error: 'La contraseña es incorrecta.' };
-  }
-  return { ok: true, usuario };
-}
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { EVENTO_SESION_EXPIRADA, erroresDeCampos, mensajeDeError, tokens } from '../services/api';
+import { authService } from '../services/authService';
+import { aUsuarioFront } from '../services/adaptadores';
 
 const AuthContext = createContext(null);
 
-// Sesion simulada, guarda en localStorage al usuario que inicio sesion
+// Sesion del usuario con JWT, los tokens se guardan en localStorage y la sesion sobrevive a recargar la pagina
 export function AuthProvider({ children }) {
-  const [usuario, setUsuario] = useState(() => leer(CLAVE_SESION, null));
+  const [usuario, setUsuario] = useState(null);
+  // Mientras se valida el token guardado no se debe redirigir al login
+  const [verificando, setVerificando] = useState(() => !!tokens.access);
 
-  const iniciarSesion = (correo, contrasena) => {
-    const resultado = autenticar(correo, contrasena);
-
-    if (resultado.ok) {
-      guardar(CLAVE_SESION, resultado.usuario);
-      setUsuario(resultado.usuario);
+  // Al abrir la pagina, si hay un token guardado se pide al backend el usuario de esa sesion
+  useEffect(() => {
+    if (!tokens.access) {
+      return undefined;
     }
-    return resultado;
-  };
+    let activo = true;
+    authService
+      .me()
+      .then((datos) => activo && setUsuario(aUsuarioFront(datos)))
+      .catch(() => tokens.borrar())
+      .finally(() => activo && setVerificando(false));
+    return () => {
+      activo = false;
+    };
+  }, []);
+
+  // Si el backend no puede renovar la sesion, la api avisa con un evento y aqui se cierra
+  useEffect(() => {
+    const alExpirar = () => setUsuario(null);
+    window.addEventListener(EVENTO_SESION_EXPIRADA, alExpirar);
+    return () => window.removeEventListener(EVENTO_SESION_EXPIRADA, alExpirar);
+  }, []);
+
+  const abrirSesion = useCallback((respuesta) => {
+    tokens.guardar(respuesta.accessToken, respuesta.refreshToken);
+    const datos = aUsuarioFront(respuesta.usuario);
+    setUsuario(datos);
+    return datos;
+  }, []);
+
+  const iniciarSesion = useCallback(
+    async (correo, contrasena) => {
+      try {
+        return { ok: true, usuario: abrirSesion(await authService.login(correo, contrasena)) };
+      } catch (error) {
+        return { ok: false, error: mensajeDeError(error, 'No se pudo iniciar sesión.') };
+      }
+    },
+    [abrirSesion]
+  );
 
   // Despues de registrarse el usuario queda con la sesion iniciada
-  const abrirSesionCon = (nuevoUsuario) => {
-    guardar(CLAVE_SESION, nuevoUsuario);
-    setUsuario(nuevoUsuario);
-  };
+  const registrar = useCallback(
+    async (datos) => {
+      try {
+        return { ok: true, usuario: abrirSesion(await authService.registro(datos)) };
+      } catch (error) {
+        return { ok: false, error: mensajeDeError(error, 'No se pudo crear la cuenta.'), errores: erroresDeCampos(error) };
+      }
+    },
+    [abrirSesion]
+  );
 
-  const cerrarSesion = () => {
-    eliminar(CLAVE_SESION);
+  const cerrarSesion = useCallback(() => {
+    tokens.borrar();
     setUsuario(null);
-  };
+  }, []);
 
-  const valor = {
-    usuario,
-    esAdmin: !!usuario && usuario.tipoUsuario === 'Administrador',
-    iniciarSesion,
-    abrirSesionCon,
-    cerrarSesion,
-  };
+  const valor = useMemo(
+    () => ({
+      usuario,
+      verificando,
+      esAdmin: !!usuario && usuario.rol === 'ADMIN',
+      iniciarSesion,
+      registrar,
+      cerrarSesion,
+    }),
+    [usuario, verificando, iniciarSesion, registrar, cerrarSesion]
+  );
 
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
 }

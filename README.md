@@ -1,13 +1,16 @@
 # Iron Disk
 
-Tienda online de discos (vinilos, CDs y cassettes). Proyecto de la Evaluación Parcial 1 y 2 de
+Tienda online de discos (vinilos, CDs y cassettes). Proyecto de la Evaluación Parcial 1, 2 y 3 de
 Desarrollo Full Stack II (DSY1104), Duoc UC.
 
 - Evaluación 1: sitio en HTML, CSS y JavaScript, en la raíz del repositorio.
 - Evaluación 2: la misma tienda hecha con React y Bootstrap, en la carpeta `iron-disk-react`.
+- Evaluación 3: la tienda React conectada a un backend con Spring Boot, MySQL y JWT.
+  El backend está en otro repositorio: https://github.com/Bast-JFR/iron-disk-backend
 
-Proyecto frontend puro, sin backend ni base de datos; lo que necesite persistir (carrito de
-compras, productos, usuarios y órdenes) se guarda en `localStorage`.
+Hasta la Evaluación 2 el proyecto era frontend puro y todo se guardaba en `localStorage`. Desde la
+Evaluación 3 el registro, el inicio de sesión, el catálogo, las categorías y el panel de productos usan
+el backend. El carrito sigue guardándose en el navegador.
 
 Diseño responsivo: el sitio se adapta a celulares y tablets.
 
@@ -34,6 +37,34 @@ Para entrar al panel de administración: `ba.jofre@duoc.cl` con contraseña `adm
 En el checkout, las tarjetas que parten con 0000 simulan un pago rechazado.
 
 La documentación de la entrega está en la carpeta `docs`: ERS versión 2 y documento de cobertura de testing.
+
+## Evaluación 3: conexión con el backend
+
+La tienda React consume la API del backend con axios. El frontend nunca habla con MySQL, siempre pasa por la API.
+
+1. Levanta el backend (ver el README de `iron-disk-backend`): `docker compose up -d` y `./mvnw spring-boot:run`.
+   Queda en `http://localhost:8080`.
+2. Desde la carpeta `iron-disk-react`: `npm install` y `npm start`.
+
+Cómo se conecta:
+
+| Pieza | Qué hace |
+|---|---|
+| `src/services/api.js` | Instancia de axios hacia el backend, guarda los tokens y agrega el token a cada petición |
+| `src/services/*Service.js` | Un servicio por recurso (autenticación, productos y categorías) |
+| `src/context/AuthContext.js` | Sesión con JWT, sobrevive a recargar la página y se valida con `/auth/me` |
+| `src/hooks/useCarga.js` | Maneja los tres estados de cada pantalla: cargando, datos y error |
+
+La dirección del backend se puede cambiar copiando `.env.example` como `.env` y editando `REACT_APP_API_URL`.
+Si el token de acceso vence, la API lo renueva sola con el token de renovación y repite la petición.
+
+Cuentas de ejemplo que crea el backend:
+
+| Rol | Correo | Contraseña |
+|---|---|---|
+| Administrador | `ba.jofre@duoc.cl` | `admin123` |
+| Vendedor | `diego.perez@duoc.cl` | `vendedor1` |
+| Cliente | `camila.soto@gmail.com` | `cliente1` |
 
 ## Estructura del proyecto
 

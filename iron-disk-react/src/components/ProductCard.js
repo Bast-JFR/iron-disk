@@ -10,7 +10,7 @@ function ProductCard({ producto, onAgregar }) {
 
   return (
     <div className="card card-iron card-producto h-100">
-      <Link to={`/productos/${producto.codigo}`}>
+      <Link to={`/productos/${producto.id}`}>
         <img src={producto.imagen} className="card-img-top" alt={`${producto.nombre} de ${producto.artista}`} />
       </Link>
       <div className="card-body d-flex flex-column">
