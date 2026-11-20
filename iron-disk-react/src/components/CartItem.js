@@ -9,7 +9,7 @@ function CartItem({ item, stock, onCantidad, onQuitar }) {
         <div className="d-flex align-items-center gap-3">
           <img src={item.imagen} alt={item.nombre} className="carrito-imagen rounded" />
           <div>
-            <Link to={`/productos/${item.codigo}`} className="fw-bold text-decoration-none">
+            <Link to={item.id ? `/productos/${item.id}` : '/productos'} className="fw-bold text-decoration-none">
               {item.nombre}
             </Link>
             <div className="small text-secondary">{item.artista}</div>

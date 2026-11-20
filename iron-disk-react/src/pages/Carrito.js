@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 import { useCarrito } from '../context/CarritoContext';
-import { buscarProductoPorCodigo } from '../data/productos';
 import { formatearPrecio } from '../utils/formato';
 
 // Carrito de compras, la cantidad no puede pasar del stock disponible
 function Carrito() {
   const { items, total, cambiarCantidad, quitar, vaciar } = useCarrito();
 
+  // El stock se guarda en el carrito al agregar el producto
   const stockDe = (codigo) => {
-    const producto = buscarProductoPorCodigo(codigo);
-    return producto ? producto.stock : 1;
+    const item = items.find((i) => i.codigo === codigo);
+    return item && item.stock ? item.stock : 1;
   };
 
   const cambiar = (codigo, cantidad) => {

@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import ProductGrid from '../components/ProductGrid';
 import Aviso from '../components/Aviso';
+import Cargando from '../components/Cargando';
+import MensajeError from '../components/MensajeError';
 import useAgregarAlCarrito from '../hooks/useAgregarAlCarrito';
-import { obtenerProductos } from '../data/productos';
+import useCarga from '../hooks/useCarga';
+import { productoService } from '../services/productoService';
 
 const ACCESOS = [
   { ruta: '/nosotros', titulo: 'Conócenos', texto: 'Quiénes somos y qué ofrecemos a los coleccionistas.' },
@@ -13,7 +16,8 @@ const ACCESOS = [
 // Pagina de inicio con banner, discos destacados y accesos a otras secciones
 function Home() {
   const { aviso, agregarProducto } = useAgregarAlCarrito();
-  const destacados = obtenerProductos().slice(0, 8);
+  const { datos, cargando, error, recargar } = useCarga(() => productoService.listar(), []);
+  const destacados = (datos || []).slice(0, 8);
 
   return (
     <>
@@ -36,7 +40,8 @@ function Home() {
 
       <section className="container py-4">
         <h2 className="titulo-seccion mb-4">Discos destacados</h2>
-        <ProductGrid productos={destacados} onAgregar={agregarProducto} />
+        <MensajeError mensaje={error} onReintentar={recargar} />
+        {cargando ? <Cargando texto="Cargando discos..." /> : !error && <ProductGrid productos={destacados} onAgregar={agregarProducto} />}
       </section>
 
       <section className="container py-5">
