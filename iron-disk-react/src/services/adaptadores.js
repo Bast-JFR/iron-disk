@@ -35,3 +35,34 @@ export function aProductoApi(formulario) {
     categoriaId: Number(formulario.categoria),
   };
 }
+
+const ESTADOS_BOLETA = { PAGADA: 'Pagada', ENVIADA: 'Enviada', ENTREGADA: 'Entregada', ANULADA: 'Anulada' };
+
+// La boleta del backend se transforma en la orden que muestran las pantallas
+export function aOrdenFront(boleta) {
+  return {
+    id: boleta.id,
+    numero: `ORD-${String(boleta.id).padStart(5, '0')}`,
+    fecha: boleta.fecha,
+    estado: ESTADOS_BOLETA[boleta.estado] || boleta.estado,
+    estadoApi: boleta.estado,
+    usuarioId: boleta.usuarioId,
+    cliente: boleta.cliente,
+    direccion: boleta.envio,
+    items: boleta.items,
+    total: boleta.total,
+  };
+}
+
+// Datos del checkout a la forma que espera el backend, solo viaja el producto y la cantidad
+export function aCompraApi(cliente, direccion, items) {
+  return {
+    nombre: cliente.nombre,
+    apellidos: cliente.apellidos,
+    correo: cliente.correo,
+    calle: direccion.calle,
+    region: direccion.region,
+    comuna: direccion.comuna,
+    items: items.map((i) => ({ productoId: i.id, cantidad: i.cantidad })),
+  };
+}
