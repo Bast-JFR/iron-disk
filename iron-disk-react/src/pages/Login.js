@@ -5,13 +5,14 @@ import Boton from '../components/Boton';
 import { useAuth } from '../context/AuthContext';
 import { validarCorreo, validarContrasena } from '../utils/validaciones';
 
-// Inicio de sesion, valida el formato antes de revisar la cuenta
+// Inicio de sesion, valida el formato y despues consulta la cuenta al backend
 function Login() {
   const { iniciarSesion } = useAuth();
   const navegar = useNavigate();
   const [valores, setValores] = useState({ correo: '', contrasena: '' });
   const [tocados, setTocados] = useState({});
   const [errorSesion, setErrorSesion] = useState('');
+  const [enviando, setEnviando] = useState(false);
 
   const errores = {
     correo: validarCorreo(valores.correo),
@@ -25,7 +26,7 @@ function Login() {
     setErrorSesion('');
   };
 
-  const enviar = (e) => {
+  const enviar = async (e) => {
     e.preventDefault();
     setTocados({ correo: true, contrasena: true });
 
@@ -33,13 +34,15 @@ function Login() {
       return;
     }
 
-    const resultado = iniciarSesion(valores.correo.trim(), valores.contrasena);
+    setEnviando(true);
+    const resultado = await iniciarSesion(valores.correo.trim(), valores.contrasena);
+    setEnviando(false);
 
     if (!resultado.ok) {
       setErrorSesion(resultado.error);
       return;
     }
-    navegar(resultado.usuario.tipoUsuario === 'Administrador' ? '/admin' : '/');
+    navegar(resultado.usuario.rol === 'ADMIN' ? '/admin' : '/');
   };
 
   return (
@@ -56,7 +59,7 @@ function Login() {
         <form onSubmit={enviar} noValidate>
           <FormField id="correo" etiqueta="Correo electrónico" tipo="email" valor={valores.correo} onCambio={cambiar('correo')} error={mostrarError('correo')} maxLength={100} />
           <FormField id="contrasena" etiqueta="Contraseña" tipo="password" valor={valores.contrasena} onCambio={cambiar('contrasena')} error={mostrarError('contrasena')} maxLength={10} />
-          <Boton tipo="submit" etiqueta="Entrar" clase="w-100" />
+          <Boton tipo="submit" etiqueta={enviando ? 'Entrando...' : 'Entrar'} deshabilitado={enviando} clase="w-100" />
         </form>
 
         <p className="mt-3 text-secondary">

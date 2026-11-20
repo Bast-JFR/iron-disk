@@ -4,7 +4,6 @@ import FormField from '../components/FormField';
 import SelectorRegionComuna from '../components/SelectorRegionComuna';
 import Boton from '../components/Boton';
 import { useAuth } from '../context/AuthContext';
-import { agregarUsuario, buscarUsuarioPorCorreo, buscarUsuarioPorRun } from '../data/usuarios';
 import { validarNombre, validarApellidos, validarRun, validarCorreo, validarContrasena, validarDireccion, validarSeleccion } from '../utils/validaciones';
 
 const CAMPOS = ['run', 'nombre', 'apellidos', 'correo', 'contrasena', 'repetir', 'direccion', 'region', 'comuna'];
@@ -25,7 +24,7 @@ function calcularErrores(v) {
 
 // Registro de un cliente nuevo, al terminar queda con la sesion iniciada
 function Registro() {
-  const { abrirSesionCon } = useAuth();
+  const { registrar } = useAuth();
   const navegar = useNavigate();
   const [valores, setValores] = useState({
     run: '',
@@ -41,6 +40,7 @@ function Registro() {
   });
   const [tocados, setTocados] = useState({});
   const [errorGeneral, setErrorGeneral] = useState('');
+  const [enviando, setEnviando] = useState(false);
 
   const errores = calcularErrores(valores);
   const mostrarError = (campo) => (tocados[campo] ? errores[campo] : '');
@@ -56,36 +56,33 @@ function Registro() {
     setTocados((t) => ({ ...t, region: true, comuna: true }));
   };
 
-  const enviar = (e) => {
+  const enviar = async (e) => {
     e.preventDefault();
     setTocados(Object.fromEntries(CAMPOS.map((c) => [c, true])));
 
     if (Object.values(errores).some((m) => m !== '')) {
       return;
     }
-    if (buscarUsuarioPorRun(valores.run.trim().toUpperCase())) {
-      setErrorGeneral('Ya existe una cuenta con ese RUN.');
-      return;
-    }
-    if (buscarUsuarioPorCorreo(valores.correo.trim())) {
-      setErrorGeneral('Ya existe una cuenta con ese correo.');
-      return;
-    }
-
-    const usuario = {
+    // El backend valida de nuevo todo y avisa si el RUN o el correo ya existen
+    const datos = {
       run: valores.run.trim().toUpperCase(),
       nombre: valores.nombre.trim(),
       apellidos: valores.apellidos.trim(),
       correo: valores.correo.trim(),
-      contrasena: valores.contrasena,
+      password: valores.contrasena,
       fechaNacimiento: valores.fechaNacimiento,
-      tipoUsuario: 'Cliente',
       region: valores.region,
       comuna: valores.comuna,
       direccion: valores.direccion.trim(),
     };
-    agregarUsuario(usuario);
-    abrirSesionCon(usuario);
+    setEnviando(true);
+    const resultado = await registrar(datos);
+    setEnviando(false);
+
+    if (!resultado.ok) {
+      setErrorGeneral(resultado.error);
+      return;
+    }
     navegar('/');
   };
 
@@ -136,7 +133,7 @@ function Registro() {
             errorComuna={mostrarError('comuna')}
           />
 
-          <Boton tipo="submit" etiqueta="Crear cuenta" />
+          <Boton tipo="submit" etiqueta={enviando ? 'Creando cuenta...' : 'Crear cuenta'} deshabilitado={enviando} />
         </form>
 
         <p className="mt-3 text-secondary">

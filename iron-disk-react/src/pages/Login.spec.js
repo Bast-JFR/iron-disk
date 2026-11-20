@@ -1,14 +1,23 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Login from './Login';
 import { AuthProvider } from '../context/AuthContext';
+import { authService } from '../services/authService';
+import { tokens } from '../services/api';
 
-// Reemplaza localStorage por un objeto en memoria para no tocar el del navegador
-function simularAlmacen() {
-  const datos = {};
-  spyOn(Storage.prototype, 'getItem').and.callFake((clave) => (clave in datos ? datos[clave] : null));
-  spyOn(Storage.prototype, 'setItem').and.callFake((clave, valor) => {
-    datos[clave] = String(valor);
+const RESPUESTA = {
+  accessToken: 'acceso-123',
+  refreshToken: 'renovacion-123',
+  expiraEnMs: 900000,
+  usuario: { id: 4, run: '123456785', nombre: 'Camila', apellidos: 'Soto Rojas', correo: 'camila.soto@gmail.com', rol: 'CLIENTE' },
+};
+
+// Reintenta hasta que se cumpla la condicion, porque el expect de Jasmine no lanza error y waitFor no reintentaria
+function esperar(condicion) {
+  return waitFor(() => {
+    if (!condicion()) {
+      throw new Error('La condición todavía no se cumple');
+    }
   });
 }
 
@@ -26,15 +35,13 @@ function escribir(container, id, valor) {
   fireEvent.change(container.querySelector(`#${id}`), { target: { value: valor } });
 }
 
-// La sesion cuenta como guardada cuando se escribe un usuario y no el null inicial
-function sesionGuardada() {
-  return Storage.prototype.setItem.calls.allArgs().some((args) => args[0] === 'iron-disk-react-sesion' && args[1] !== 'null');
-}
-
 describe('Login', () => {
-  beforeEach(simularAlmacen);
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
-  it('con un correo invalido muestra el error y no inicia sesion', () => {
+  it('con un correo invalido muestra el error y no llama al backend', () => {
+    spyOn(authService, 'login');
     const { container } = dibujar();
 
     escribir(container, 'correo', 'ana@hotmail.com');
@@ -42,6 +49,19 @@ describe('Login', () => {
     fireEvent.submit(container.querySelector('form'));
 
     expect(container.textContent).toContain('Solo se aceptan');
-    expect(sesionGuardada()).toBe(false);
+    expect(authService.login).not.toHaveBeenCalled();
+  });
+
+  it('con datos correctos guarda los tokens de la sesion', async () => {
+    spyOn(authService, 'login').and.returnValue(Promise.resolve(RESPUESTA));
+    const { container } = dibujar();
+
+    escribir(container, 'correo', 'camila.soto@gmail.com');
+    escribir(container, 'contrasena', 'cliente1');
+    fireEvent.submit(container.querySelector('form'));
+
+    await esperar(() => tokens.access === 'acceso-123');
+    expect(tokens.refresh).toBe('renovacion-123');
+    expect(authService.login).toHaveBeenCalledWith('camila.soto@gmail.com', 'cliente1');
   });
 });

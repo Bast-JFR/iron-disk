@@ -5,6 +5,7 @@ import SelectorRegionComuna from '../components/SelectorRegionComuna';
 import Boton from '../components/Boton';
 import { useCarrito } from '../context/CarritoContext';
 import { useAuth } from '../context/AuthContext';
+import Cargando from '../components/Cargando';
 import { crearOrden } from '../data/ordenes';
 import { buscarProductoPorCodigo, actualizarProducto } from '../data/productos';
 import { validarNombre, validarApellidos, validarCorreo, validarDireccion, validarSeleccion, validarTarjeta } from '../utils/validaciones';
@@ -36,7 +37,7 @@ function descontarStock(items) {
 }
 
 // Datos del comprador, direccion y pago, si hay sesion se completan solos
-function Checkout() {
+function FormularioPago() {
   const { items, total, vaciar } = useCarrito();
   const { usuario } = useAuth();
   const navegar = useNavigate();
@@ -168,6 +169,16 @@ function Checkout() {
       </div>
     </div>
   );
+}
+
+// Al recargar la pagina espera a recuperar la sesion para que los datos del comprador se completen solos
+function Checkout() {
+  const { verificando } = useAuth();
+
+  if (verificando) {
+    return <Cargando texto="Recuperando tu sesión..." />;
+  }
+  return <FormularioPago />;
 }
 
 export default Checkout;
