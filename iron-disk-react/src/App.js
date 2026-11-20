@@ -58,7 +58,7 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="productos" element={<AdminProductos />} />
               <Route path="productos/nuevo" element={<ProductoForm />} />
-              <Route path="productos/editar/:codigo" element={<ProductoForm />} />
+              <Route path="productos/editar/:id" element={<ProductoForm />} />
               <Route path="productos/criticos" element={<ProductosCriticos />} />
               <Route path="usuarios" element={<AdminUsuarios />} />
               <Route path="usuarios/nuevo" element={<UsuarioForm />} />

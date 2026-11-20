@@ -23,7 +23,7 @@ function TablaProductos({ productos, onEliminar }) {
         </thead>
         <tbody>
           {productos.map((p) => (
-            <tr key={p.codigo}>
+            <tr key={p.id || p.codigo}>
               <td>{p.codigo}</td>
               <td>
                 {p.nombre}
@@ -35,7 +35,7 @@ function TablaProductos({ productos, onEliminar }) {
               <td className="text-end">{p.stockCritico}</td>
               {onEliminar && (
                 <td className="text-end text-nowrap">
-                  <Link to={`/admin/productos/editar/${p.codigo}`} className="btn btn-sm btn-outline-primary me-2">
+                  <Link to={`/admin/productos/editar/${p.id}`} className="btn btn-sm btn-outline-primary me-2">
                     Editar
                   </Link>
                   <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => onEliminar(p)}>
