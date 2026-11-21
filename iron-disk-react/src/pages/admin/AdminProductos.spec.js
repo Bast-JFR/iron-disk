@@ -18,9 +18,9 @@ function esperar(condicion) {
   });
 }
 
-function dibujar() {
+function dibujar(rol = 'ADMIN') {
   return render(
-    <AuthContext.Provider value={{ usuario: { rol: 'ADMIN' } }}>
+    <AuthContext.Provider value={{ usuario: { rol } }}>
       <MemoryRouter>
         <AdminProductos />
       </MemoryRouter>
@@ -45,5 +45,15 @@ describe('AdminProductos', () => {
 
     expect(window.confirm).toHaveBeenCalled();
     expect(productoService.eliminar).not.toHaveBeenCalled();
+  });
+
+  it('el vendedor ve los productos pero no tiene botones para crear, editar ni eliminar', async () => {
+    spyOn(productoService, 'listar').and.returnValue(Promise.resolve(PRODUCTOS));
+    const { container } = dibujar('VENDEDOR');
+    await esperar(() => container.querySelectorAll('tbody tr').length === 3);
+
+    expect(boton(container, 'Eliminar')).toBeUndefined();
+    expect(container.textContent).not.toContain('Nuevo producto');
+    expect(container.textContent).not.toContain('Editar');
   });
 });
