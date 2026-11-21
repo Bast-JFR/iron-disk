@@ -4,7 +4,6 @@ import Perfil from './Perfil';
 import { AuthProvider, useAuth } from '../../context/AuthContext';
 import { authService } from '../../services/authService';
 import { tokens } from '../../services/api';
-import { USUARIOS_BASE } from '../../data/usuarios';
 
 // Reemplaza localStorage por un objeto en memoria para no tocar el del navegador
 function simularAlmacen() {
@@ -23,7 +22,17 @@ function SoloConSesion({ children }) {
 
 // Deja iniciada la sesion de Renato, que es administrador
 function dibujarConSesion() {
-  const renato = { ...USUARIOS_BASE.find((u) => u.correo === 're.colipe@duoc.cl'), rol: 'ADMIN' };
+  const renato = {
+    id: 2,
+    run: '181245875',
+    nombre: 'Renato',
+    apellidos: 'Colipe Lienan',
+    correo: 're.colipe@duoc.cl',
+    rol: 'ADMIN',
+    region: 'Metropolitana de Santiago',
+    comuna: 'Santiago',
+    direccion: 'Alameda 1234',
+  };
   tokens.guardar('acceso', 'renovacion');
   spyOn(authService, 'me').and.returnValue(Promise.resolve(renato));
 
@@ -51,6 +60,6 @@ describe('Perfil', () => {
     });
 
     expect(container.textContent).toContain('re.colipe@duoc.cl');
-    expect(container.textContent).toContain('Renato Colipe Lienan');
+    expect(container.querySelector('#nombre').value).toBe('Renato');
   });
 });

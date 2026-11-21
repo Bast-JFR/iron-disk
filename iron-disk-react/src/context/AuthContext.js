@@ -65,6 +65,9 @@ export function AuthProvider({ children }) {
     [abrirSesion]
   );
 
+  // Despues de editar el perfil la sesion queda con los datos nuevos
+  const actualizarUsuario = useCallback((datos) => setUsuario(datos), []);
+
   const cerrarSesion = useCallback(() => {
     tokens.borrar();
     setUsuario(null);
@@ -77,9 +80,10 @@ export function AuthProvider({ children }) {
       esAdmin: !!usuario && usuario.rol === 'ADMIN',
       iniciarSesion,
       registrar,
+      actualizarUsuario,
       cerrarSesion,
     }),
-    [usuario, verificando, iniciarSesion, registrar, cerrarSesion]
+    [usuario, verificando, iniciarSesion, registrar, actualizarUsuario, cerrarSesion]
   );
 
   return <AuthContext.Provider value={valor}>{children}</AuthContext.Provider>;
