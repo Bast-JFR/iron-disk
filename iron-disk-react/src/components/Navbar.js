@@ -54,6 +54,9 @@ function Navbar() {
             {usuario ? (
               <>
                 <span className="small text-secondary">Hola, {usuario.nombre}</span>
+                <Link className="btn btn-sm btn-outline-secondary" to="/mis-compras">
+                  Mis compras
+                </Link>
                 {esAdmin && (
                   <Link className="btn btn-sm btn-outline-secondary" to="/admin">
                     Admin

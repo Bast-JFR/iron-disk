@@ -15,6 +15,7 @@ import Carrito from './pages/Carrito';
 import Checkout from './pages/Checkout';
 import CompraExitosa from './pages/CompraExitosa';
 import CompraError from './pages/CompraError';
+import MisCompras from './pages/MisCompras';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 import AdminLayout from './components/AdminLayout';
@@ -53,6 +54,7 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/compra-exitosa/:id" element={<CompraExitosa />} />
               <Route path="/compra-error" element={<CompraError />} />
+              <Route path="/mis-compras" element={<MisCompras />} />
             </Route>
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
