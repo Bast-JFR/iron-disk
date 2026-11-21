@@ -2,20 +2,31 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TablaUsuarios from '../../components/TablaUsuarios';
 import Buscador from '../../components/Buscador';
-import { obtenerUsuarios, eliminarUsuario } from '../../data/usuarios';
+import Cargando from '../../components/Cargando';
+import MensajeError from '../../components/MensajeError';
+import useCarga from '../../hooks/useCarga';
+import { usuarioService } from '../../services/usuarioService';
+import { mensajeDeError } from '../../services/api';
 import { filtrarUsuarios } from '../../utils/filtros';
 
 // Listado de usuarios con busqueda, permite crear, editar, ver historial y eliminar
 function AdminUsuarios() {
-  const [usuarios, setUsuarios] = useState(() => obtenerUsuarios());
+  const { datos, cargando, error, recargar } = useCarga(() => usuarioService.listar(), []);
   const [texto, setTexto] = useState('');
+  const [errorEliminar, setErrorEliminar] = useState('');
 
-  const eliminar = (usuario) => {
+  const eliminar = async (usuario) => {
     if (!window.confirm(`¿Eliminar a ${usuario.nombre} ${usuario.apellidos}?`)) {
       return;
     }
-    eliminarUsuario(usuario.run);
-    setUsuarios(obtenerUsuarios());
+    setErrorEliminar('');
+    try {
+      await usuarioService.eliminar(usuario.id);
+      recargar();
+    } catch (e) {
+      // El backend no deja eliminar a un usuario con compras ni a la cuenta propia
+      setErrorEliminar(mensajeDeError(e, 'No se pudo eliminar el usuario.'));
+    }
   };
 
   return (
@@ -29,7 +40,8 @@ function AdminUsuarios() {
       <div className="mb-3 col-md-6">
         <Buscador valor={texto} onCambio={setTexto} placeholder="Buscar por nombre, apellidos o correo" />
       </div>
-      <TablaUsuarios usuarios={filtrarUsuarios(usuarios, texto)} onEliminar={eliminar} />
+      <MensajeError mensaje={error || errorEliminar} onReintentar={error ? recargar : undefined} />
+      {cargando ? <Cargando texto="Cargando usuarios..." /> : !error && <TablaUsuarios usuarios={filtrarUsuarios(datos || [], texto)} onEliminar={eliminar} />}
     </>
   );
 }

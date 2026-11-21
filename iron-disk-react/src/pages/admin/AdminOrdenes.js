@@ -1,18 +1,24 @@
 import { Link } from 'react-router-dom';
-import { obtenerOrdenes } from '../../data/ordenes';
+import Cargando from '../../components/Cargando';
+import MensajeError from '../../components/MensajeError';
+import useCarga from '../../hooks/useCarga';
+import { boletaService } from '../../services/boletaService';
 import { formatearFecha, formatearPrecio } from '../../utils/formato';
 
-// Listado de ordenes, mostradas de la mas nueva a la mas antigua
+// Listado de ordenes, el backend las entrega de la mas nueva a la mas antigua
 function AdminOrdenes() {
-  const ordenes = [...obtenerOrdenes()].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  const { datos: ordenes, cargando, error, recargar } = useCarga(() => boletaService.listar(), []);
 
   return (
     <>
       <h1 className="titulo-seccion mb-4">Órdenes</h1>
+      <MensajeError mensaje={error} onReintentar={recargar} />
 
-      {ordenes.length === 0 ? (
-        <p className="text-secondary">Todavía no hay órdenes.</p>
-      ) : (
+      {cargando && <Cargando texto="Cargando órdenes..." />}
+
+      {ordenes && ordenes.length === 0 && <p className="text-secondary">Todavía no hay órdenes.</p>}
+
+      {ordenes && ordenes.length > 0 && (
         <div className="table-responsive">
           <table className="table table-hover align-middle">
             <thead>
@@ -28,7 +34,7 @@ function AdminOrdenes() {
             <tbody>
               {ordenes.map((o) => (
                 <tr key={o.id}>
-                  <td>{o.id}</td>
+                  <td>{o.numero}</td>
                   <td>{formatearFecha(o.fecha)}</td>
                   <td>
                     {o.cliente.nombre} {o.cliente.apellidos}

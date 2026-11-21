@@ -1,5 +1,6 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import AdminProductos from './AdminProductos';
 import { productoService } from '../../services/productoService';
 
@@ -19,9 +20,11 @@ function esperar(condicion) {
 
 function dibujar() {
   return render(
-    <MemoryRouter>
-      <AdminProductos />
-    </MemoryRouter>
+    <AuthContext.Provider value={{ usuario: { rol: 'ADMIN' } }}>
+      <MemoryRouter>
+        <AdminProductos />
+      </MemoryRouter>
+    </AuthContext.Provider>
   );
 }
 
