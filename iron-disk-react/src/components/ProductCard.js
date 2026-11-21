@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Boton from './Boton';
-import { precioFinal } from '../data/productos';
+import { precioFinal } from '../utils/precios';
 import { formatearPrecio } from '../utils/formato';
 
 // Tarjeta de un disco con su imagen, precio y boton para agregarlo al carrito

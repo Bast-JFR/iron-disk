@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCarrito } from '../context/CarritoContext';
-import { precioFinal } from '../data/productos';
+import { precioFinal } from '../utils/precios';
 
 // Agrega un producto al carrito y deja un aviso corto para mostrarle al usuario
 function useAgregarAlCarrito() {

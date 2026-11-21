@@ -7,7 +7,7 @@ import Cargando from '../components/Cargando';
 import useAgregarAlCarrito from '../hooks/useAgregarAlCarrito';
 import useCarga from '../hooks/useCarga';
 import { productoService } from '../services/productoService';
-import { precioFinal } from '../data/productos';
+import { precioFinal } from '../utils/precios';
 import { formatearPrecio } from '../utils/formato';
 
 // Detalle de un disco, el id viene en la direccion de la pagina
