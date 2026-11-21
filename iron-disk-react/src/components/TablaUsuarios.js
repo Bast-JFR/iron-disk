@@ -33,7 +33,7 @@ function TablaUsuarios({ usuarios, onEliminar }) {
                 <Link to={`/admin/usuarios/editar/${u.id}`} className="btn btn-sm btn-outline-primary me-2">
                   Editar
                 </Link>
-                <Link to={`/admin/usuarios/${u.run}/compras`} className="btn btn-sm btn-outline-secondary me-2">
+                <Link to={`/admin/usuarios/${u.id}/compras`} className="btn btn-sm btn-outline-secondary me-2">
                   Historial
                 </Link>
                 <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => onEliminar(u)}>

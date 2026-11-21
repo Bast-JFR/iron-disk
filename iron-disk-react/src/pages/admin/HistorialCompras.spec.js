@@ -1,48 +1,50 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import HistorialCompras from './HistorialCompras';
+import { usuarioService } from '../../services/usuarioService';
+import { boletaService } from '../../services/boletaService';
 
-// Reemplaza localStorage por un objeto en memoria para no tocar el del navegador
-function simularAlmacen() {
-  const datos = {};
-  spyOn(Storage.prototype, 'getItem').and.callFake((clave) => (clave in datos ? datos[clave] : null));
-  spyOn(Storage.prototype, 'setItem').and.callFake((clave, valor) => {
-    datos[clave] = String(valor);
+const USUARIO = { id: 4, run: '123456785', nombre: 'Camila', apellidos: 'Soto Rojas', correo: 'camila.soto@gmail.com' };
+
+const ORDEN = {
+  id: 1,
+  numero: 'ORD-00001',
+  fecha: '2026-10-05T10:00:00',
+  estado: 'Pagada',
+  estadoApi: 'PAGADA',
+  cliente: { nombre: 'Camila', apellidos: 'Soto Rojas', correo: 'camila.soto@gmail.com' },
+  direccion: { calle: 'Calle Valparaíso 567', region: 'Valparaíso', comuna: 'Viña del Mar' },
+  items: [{ codigo: 'IM-001', nombre: 'Powerslave', precio: 15990, cantidad: 1 }],
+  total: 15990,
+};
+
+function esperar(condicion) {
+  return waitFor(() => {
+    if (!condicion()) {
+      throw new Error('La condición todavía no se cumple');
+    }
   });
 }
 
-// Camila (run 123456785) tiene una compra guardada de antemano para el usuario de ejemplo
-function guardarOrdenDeEjemplo() {
-  const orden = {
-    id: 'ORD-00001',
-    fecha: new Date().toISOString(),
-    estado: 'Pagada',
-    cliente: { nombre: 'Camila', apellidos: 'Soto Rojas', correo: 'camila.soto@gmail.com' },
-    direccion: { calle: 'Calle Valparaíso 567', region: 'Valparaíso', comuna: 'Viña del Mar' },
-    items: [{ codigo: 'IM-001', nombre: 'Powerslave', precio: 15990, cantidad: 1 }],
-    total: 15990,
-  };
-  localStorage.setItem('iron-disk-react-ordenes', JSON.stringify([orden]));
-}
-
-function dibujar(run) {
+function dibujar(id) {
   return render(
-    <MemoryRouter initialEntries={[`/admin/usuarios/${run}/compras`]}>
+    <MemoryRouter initialEntries={[`/admin/usuarios/${id}/compras`]}>
       <Routes>
-        <Route path="/admin/usuarios/:run/compras" element={<HistorialCompras />} />
+        <Route path="/admin/usuarios/:id/compras" element={<HistorialCompras />} />
       </Routes>
     </MemoryRouter>
   );
 }
 
 describe('HistorialCompras', () => {
-  beforeEach(simularAlmacen);
+  it('muestra las compras del usuario que compro', async () => {
+    spyOn(usuarioService, 'obtener').and.returnValue(Promise.resolve(USUARIO));
+    spyOn(boletaService, 'porUsuario').and.returnValue(Promise.resolve([ORDEN]));
+    const { container } = dibujar(4);
 
-  it('muestra las compras del usuario que compro', () => {
-    guardarOrdenDeEjemplo();
-    const { container } = dibujar('123456785');
+    await esperar(() => container.textContent.includes('ORD-00001'));
 
-    expect(container.textContent).toContain('ORD-00001');
     expect(container.querySelectorAll('tbody tr').length).toBe(1);
+    expect(boletaService.porUsuario).toHaveBeenCalledWith('4');
   });
 });

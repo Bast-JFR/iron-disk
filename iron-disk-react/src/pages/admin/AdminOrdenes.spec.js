@@ -1,25 +1,23 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import AdminOrdenes from './AdminOrdenes';
+import { boletaService } from '../../services/boletaService';
 
-// Reemplaza localStorage por un objeto en memoria para no tocar el del navegador
-function simularAlmacen() {
-  const datos = {};
-  spyOn(Storage.prototype, 'getItem').and.callFake((clave) => (clave in datos ? datos[clave] : null));
-  spyOn(Storage.prototype, 'setItem').and.callFake((clave, valor) => {
-    datos[clave] = String(valor);
+function esperar(condicion) {
+  return waitFor(() => {
+    if (!condicion()) {
+      throw new Error('La condición todavía no se cumple');
+    }
   });
-}
-
-function guardarOrdenes(ordenes) {
-  localStorage.setItem('iron-disk-react-ordenes', JSON.stringify(ordenes));
 }
 
 function orden(id, fecha, total = 9990) {
   return {
     id,
+    numero: `ORD-0000${id}`,
     fecha,
     estado: 'Pagada',
+    estadoApi: 'PAGADA',
     cliente: { nombre: 'Camila', apellidos: 'Soto Rojas', correo: 'camila.soto@gmail.com' },
     direccion: { calle: 'Calle Valparaíso 567', region: 'Valparaíso', comuna: 'Viña del Mar' },
     items: [{ codigo: 'IM-001', nombre: 'Powerslave', precio: total, cantidad: 1 }],
@@ -36,13 +34,12 @@ function dibujar() {
 }
 
 describe('AdminOrdenes', () => {
-  beforeEach(simularAlmacen);
-
-  it('lista las ordenes guardadas', () => {
-    guardarOrdenes([orden('ORD-00001', '2026-10-01T10:00:00.000Z'), orden('ORD-00002', '2026-10-05T10:00:00.000Z')]);
+  it('lista las ordenes que entrega el backend', async () => {
+    spyOn(boletaService, 'listar').and.returnValue(Promise.resolve([orden(2, '2026-10-05T10:00:00'), orden(1, '2026-10-01T10:00:00')]));
 
     const { container } = dibujar();
 
-    expect(container.querySelectorAll('tbody tr').length).toBe(2);
+    await esperar(() => container.querySelectorAll('tbody tr').length === 2);
+    expect(container.textContent).toContain('ORD-00002');
   });
 });

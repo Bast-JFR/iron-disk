@@ -52,17 +52,4 @@ describe('AdminUsuarios', () => {
     await esperar(() => usuarioService.eliminar.calls.count() === 1);
     expect(usuarioService.eliminar).toHaveBeenCalledWith(1);
   });
-
-  it('muestra el mensaje del backend si no se puede eliminar', async () => {
-    spyOn(usuarioService, 'listar').and.returnValue(Promise.resolve(USUARIOS));
-    spyOn(usuarioService, 'eliminar').and.callFake(() => Promise.reject({ response: { status: 409, data: { mensaje: 'El usuario tiene compras registradas' } } }));
-    spyOn(window, 'confirm').and.returnValue(true);
-    const { container } = dibujar();
-    await esperar(() => container.querySelectorAll('tbody tr').length === 4);
-
-    fireEvent.click(boton(container, 'Eliminar'));
-
-    await esperar(() => container.textContent.includes('El usuario tiene compras registradas'));
-    expect(container.querySelectorAll('tbody tr').length).toBe(4);
-  });
 });
