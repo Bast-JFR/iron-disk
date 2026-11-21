@@ -6,7 +6,7 @@ function ResumenOrden({ orden }) {
     <div className="card card-iron">
       <div className="card-body">
         <div className="d-flex flex-wrap justify-content-between mb-3">
-          <h2 className="fs-5 mb-0">Orden {orden.id}</h2>
+          <h2 className="fs-5 mb-0">Orden {orden.numero || orden.id}</h2>
           <span className="text-secondary">{formatearFecha(orden.fecha)}</span>
         </div>
 

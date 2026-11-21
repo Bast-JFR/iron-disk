@@ -8,11 +8,10 @@ function CompraError() {
   return (
     <div className="container py-5">
       <div className="alert alert-danger" role="alert">
-        <h1 className="fs-3">No se pudo completar el pago</h1>
+        <h1 className="fs-3">No se pudo completar la compra</h1>
         <p className="mb-0">{motivo}</p>
-        {state && state.orden && <p className="mb-0 small">Quedó registrada como {state.orden}.</p>}
       </div>
-      <p>Tus productos siguen en el carrito. Revisa los datos de la tarjeta e inténtalo de nuevo.</p>
+      <p>Tus productos siguen en el carrito y no se hizo ningún cobro. Revisa el detalle e inténtalo de nuevo.</p>
       <Link to="/checkout" className="btn btn-primary me-2">
         Volver a intentar
       </Link>

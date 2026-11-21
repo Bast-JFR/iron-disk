@@ -6,8 +6,8 @@ import Boton from '../components/Boton';
 import { useCarrito } from '../context/CarritoContext';
 import { useAuth } from '../context/AuthContext';
 import Cargando from '../components/Cargando';
-import { crearOrden } from '../data/ordenes';
-import { buscarProductoPorCodigo, actualizarProducto } from '../data/productos';
+import { boletaService } from '../services/boletaService';
+import { mensajeDeError } from '../services/api';
 import { validarNombre, validarApellidos, validarCorreo, validarDireccion, validarSeleccion, validarTarjeta } from '../utils/validaciones';
 import { simularPago } from '../utils/pago';
 import { formatearPrecio } from '../utils/formato';
@@ -26,16 +26,6 @@ function calcularErrores(v) {
   };
 }
 
-// Resta del stock lo que se compro
-function descontarStock(items) {
-  items.forEach((i) => {
-    const producto = buscarProductoPorCodigo(i.codigo);
-    if (producto) {
-      actualizarProducto(i.codigo, { ...producto, stock: Math.max(0, producto.stock - i.cantidad) });
-    }
-  });
-}
-
 // Datos del comprador, direccion y pago, si hay sesion se completan solos
 function FormularioPago() {
   const { items, total, vaciar } = useCarrito();
@@ -52,6 +42,7 @@ function FormularioPago() {
     tarjeta: '',
   });
   const [tocados, setTocados] = useState({});
+  const [enviando, setEnviando] = useState(false);
 
   const errores = calcularErrores(valores);
   const mostrarError = (campo) => (tocados[campo] ? errores[campo] : '');
@@ -79,32 +70,34 @@ function FormularioPago() {
     );
   }
 
-  const pagar = (e) => {
+  const pagar = async (e) => {
     e.preventDefault();
     setTocados(Object.fromEntries(CAMPOS.map((c) => [c, true])));
 
-    if (Object.values(errores).some((m) => m !== '')) {
+    if (Object.values(errores).some((m) => m !== '') || enviando) {
       return;
     }
 
-    const datosOrden = {
-      cliente: { nombre: valores.nombre.trim(), apellidos: valores.apellidos.trim(), correo: valores.correo.trim() },
-      direccion: { calle: valores.direccion.trim(), region: valores.region, comuna: valores.comuna },
-      items,
-      total,
-    };
     const pago = simularPago(valores.tarjeta);
-
     if (!pago.aprobado) {
-      const rechazada = crearOrden({ ...datosOrden, estado: 'Pago rechazado' });
-      navegar('/compra-error', { state: { motivo: pago.motivo, orden: rechazada.id } });
+      navegar('/compra-error', { state: { motivo: pago.motivo } });
       return;
     }
 
-    const orden = crearOrden(datosOrden);
-    descontarStock(items);
-    vaciar();
-    navegar(`/compra-exitosa/${orden.id}`);
+    const cliente = { nombre: valores.nombre.trim(), apellidos: valores.apellidos.trim(), correo: valores.correo.trim() };
+    const direccion = { calle: valores.direccion.trim(), region: valores.region, comuna: valores.comuna };
+
+    setEnviando(true);
+    try {
+      // El precio y el total los calcula el backend, aqui solo se envia el producto y la cantidad
+      const orden = await boletaService.comprar(cliente, direccion, items);
+      vaciar();
+      navegar(`/compra-exitosa/${orden.id}`, { state: { orden } });
+    } catch (error) {
+      // Si falta stock o hay otro error el carrito se queda como estaba
+      setEnviando(false);
+      navegar('/compra-error', { state: { motivo: mensajeDeError(error, 'No pudimos registrar tu compra.') } });
+    }
   };
 
   return (
@@ -140,7 +133,7 @@ function FormularioPago() {
             <FormField id="tarjeta" etiqueta="Número de tarjeta" valor={valores.tarjeta} onCambio={cambiar('tarjeta')} onSalir={marcar('tarjeta')} error={mostrarError('tarjeta')} maxLength={16} placeholder="16 dígitos" />
             <p className="small text-secondary">Pago de prueba: las tarjetas que parten con 0000 son rechazadas.</p>
 
-            <Boton tipo="submit" etiqueta={`Pagar ${formatearPrecio(total)}`} />
+            <Boton tipo="submit" etiqueta={enviando ? 'Procesando...' : `Pagar ${formatearPrecio(total)}`} deshabilitado={enviando} />
           </form>
         </div>
 
