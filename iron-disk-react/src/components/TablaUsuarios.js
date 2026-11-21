@@ -21,7 +21,7 @@ function TablaUsuarios({ usuarios, onEliminar }) {
         </thead>
         <tbody>
           {usuarios.map((u) => (
-            <tr key={u.run}>
+            <tr key={u.id}>
               <td>{u.run}</td>
               <td>
                 {u.nombre} {u.apellidos}
@@ -30,7 +30,7 @@ function TablaUsuarios({ usuarios, onEliminar }) {
               <td>{u.tipoUsuario}</td>
               <td>{u.region}</td>
               <td className="text-end text-nowrap">
-                <Link to={`/admin/usuarios/editar/${u.run}`} className="btn btn-sm btn-outline-primary me-2">
+                <Link to={`/admin/usuarios/editar/${u.id}`} className="btn btn-sm btn-outline-primary me-2">
                   Editar
                 </Link>
                 <Link to={`/admin/usuarios/${u.run}/compras`} className="btn btn-sm btn-outline-secondary me-2">

@@ -2,6 +2,9 @@
 
 const TIPOS_USUARIO = { ADMIN: 'Administrador', VENDEDOR: 'Vendedor', CLIENTE: 'Cliente' };
 
+// Textos de los tipos de usuario para mostrar y para los selectores
+export const NOMBRES_TIPO = Object.values(TIPOS_USUARIO);
+
 export function aUsuarioFront(usuario) {
   return {
     ...usuario,
@@ -64,5 +67,22 @@ export function aCompraApi(cliente, direccion, items) {
     region: direccion.region,
     comuna: direccion.comuna,
     items: items.map((i) => ({ productoId: i.id, cantidad: i.cantidad })),
+  };
+}
+
+// Datos del formulario de usuario a la forma que espera el backend, sin contrasena el backend no la cambia
+export function aUsuarioApi(formulario) {
+  const rol = Object.keys(TIPOS_USUARIO).find((r) => TIPOS_USUARIO[r] === formulario.tipoUsuario);
+  return {
+    run: formulario.run,
+    nombre: formulario.nombre,
+    apellidos: formulario.apellidos,
+    correo: formulario.correo,
+    password: formulario.contrasena || null,
+    rol,
+    region: formulario.region,
+    comuna: formulario.comuna,
+    direccion: formulario.direccion,
+    fechaNacimiento: formulario.fechaNacimiento || null,
   };
 }

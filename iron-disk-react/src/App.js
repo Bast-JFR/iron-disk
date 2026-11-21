@@ -64,7 +64,7 @@ function App() {
               <Route path="productos/criticos" element={<ProductosCriticos />} />
               <Route path="usuarios" element={<AdminUsuarios />} />
               <Route path="usuarios/nuevo" element={<UsuarioForm />} />
-              <Route path="usuarios/editar/:run" element={<UsuarioForm />} />
+              <Route path="usuarios/editar/:id" element={<UsuarioForm />} />
               <Route path="usuarios/:run/compras" element={<HistorialCompras />} />
               <Route path="ordenes" element={<AdminOrdenes />} />
               <Route path="ordenes/:id" element={<Boleta />} />
