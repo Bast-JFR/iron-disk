@@ -3,7 +3,8 @@ import { EVENTO_SESION_EXPIRADA, erroresDeCampos, mensajeDeError, tokens } from 
 import { authService } from '../services/authService';
 import { aUsuarioFront } from '../services/adaptadores';
 
-const AuthContext = createContext(null);
+// Se exporta para poder entregar una sesion de prueba en los tests
+export const AuthContext = createContext(null);
 
 // Sesion del usuario con JWT, los tokens se guardan en localStorage y la sesion sobrevive a recargar la pagina
 export function AuthProvider({ children }) {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useCarrito } from '../context/CarritoContext';
 import { useAuth } from '../context/AuthContext';
+import { puedeEntrarAlPanel } from '../auth/permisos';
 
 const ENLACES = [
   { ruta: '/', texto: 'Home' },
@@ -16,7 +17,7 @@ const ENLACES = [
 // Barra superior con menu, buscador, carrito y acceso de usuario
 function Navbar() {
   const { unidades } = useCarrito();
-  const { usuario, esAdmin, cerrarSesion } = useAuth();
+  const { usuario, cerrarSesion } = useAuth();
   const [texto, setTexto] = useState('');
   const navegar = useNavigate();
 
@@ -57,7 +58,7 @@ function Navbar() {
                 <Link className="btn btn-sm btn-outline-secondary" to="/mis-compras">
                   Mis compras
                 </Link>
-                {esAdmin && (
+                {puedeEntrarAlPanel(usuario.rol) && (
                   <Link className="btn btn-sm btn-outline-secondary" to="/admin">
                     Admin
                   </Link>
